@@ -63,6 +63,33 @@ The tests also break the router on purpose and require the table to change each 
 
 benign.jsonl holds 47 ordinary prompts: code, questions, a README, general health questions, hashes, a UUID, camel-case identifiers and look-alike words such as scikit-learn. 43 route to cloud. 4 route local although nothing sensitive is in them (rows x00 to x03, marked `known_overblock`): a support footer with an email and a phone number, a database table named Patient Visits, a lesson plan that names Mr. Rogers and insulin, and an intake form template. Over-block count: 4 of 47. The tests pin those four as local, so a change in either direction shows up. I wrote the corpus and the patterns myself, so a zero on the first 43 says the patterns do not trip on that style of text, not that they would on yours.
 
+## v2 decode
+
+A Monte Carlo fuzz of v1 (guard-fuzz-montecarlo, seed mcfuzz-v1-20261004) found 0.508 [0.487, 0.530] of mutated sensitive prompts routed to cloud. Solo bypass rates: hex_wrap 1.000, case_change 0.857, zero_width 0.735. v2 classifies the raw prompt first, exactly as v1 did, and then these views of it. Any sensitive view routes local.
+
+1. Strip every Unicode format character (zero-width, word joiner, bidi controls, soft hyphen), NFKC normalize, strip again.
+2. Scan that view, then scan it again with case-insensitive key shapes, key header and person markers.
+3. Decode one level of hex (16 or more hex characters), URL percent-encoding and base64. Keep a decoded string only if it is at least 90% text. Invisible format characters count as text. Run every decoded string through steps 1 and 2.
+4. An unbroken encoded run of 4096 characters or more is not decoded. It routes as `unclassified`, which is local, and with local down it is refused.
+
+Rule ids from v2 views carry a suffix: `+canon`, `+hex`, `+url` or `+base64`.
+
+Tests: `cases_v2.jsonl` holds 36 synthetic fixtures in eight classes (invisible, nfkc, case, hex, base64, url, overlong, and a control class that must stay cloud). They were written first. The failing run is in RED-RUN-V2.txt (35 failed, 13 passed of 48, against v1; that run had 37 fixtures, and one that v1 already routed correctly was dropped afterwards). `tests/test_v2.py` also holds 7 mutants, one per step: invisible strip, NFKC, case-insensitive scan, hex decode, URL decode, canonicalizing decoded strings, and the long-run fail-closed rule. Each turns the v2 table. All 184 existing tests pass unchanged (no existing test file is edited). `bash run.sh` prints 231 passed.
+
+Measured, with the numbers as printed:
+
+| check | v1 | v2 |
+|---|---|---|
+| benign corpus over-block (benign.jsonl) | 4/47 | 4/47 (same four pinned rows; 0 rows from the long-run rule) |
+| fuzz, new seed router-v2-check-20261004-s2, N=2000 attack | 1037/2000 = 0.518 [0.497, 0.540] | 642/2000 = 0.321 [0.301, 0.342] |
+| fuzz false alarm, same seed, 1000 benign variants | 0/1000 [0.000, 0.004] | 0/1000 [0.000, 0.004] |
+| fuzz solo bypass: hex_wrap | 1.000 | 0.337 |
+| fuzz solo bypass: case_change | 0.714 | 0.262 |
+| fuzz solo bypass: zero_width | 0.783 | 0.133 |
+| blind eval, egress router rows only (46 attacks, 47 benign) | recall 0.39 [0.26, 0.54], 28 missed, precision 1.00 | recall 0.43 [0.30, 0.58], 26 missed, precision 1.00 |
+
+The fuzz seed was written down before the run. It is an in-distribution check: the fuzz operators informed the fix, so the drop from 0.518 to 0.321 is not evidence about attacks nobody listed. The blind eval was not read or tuned against. Its two intervals overlap, so the gain from 28 to 26 missed is within noise. I did not run the old seed on v2.
+
 ## Honesty
 
 This is a small deterministic router, not a product and not a data loss prevention system. The cases are synthetic and written for this repo. I did not test it against real traffic, real vendor APIs, a real local model or real people's data, and the benign corpus is small and written by the same author as the patterns. The destination names are labels and the costs are made-up numbers. The router decides where a prompt goes. It does not send the prompt, and it does not check that the destination keeps its side of the deal.
@@ -78,6 +105,7 @@ RED-RUN.txt is the first test run, made before router.py held any logic (a route
 - The classifier has no real timeout. The tests inject a timeout error to prove the fallback, and a real deployment needs a deadline around the call.
 - The scan covers the messages passed in. If an application adds a system prompt, a file or a tool result after routing, those are not seen.
 - It over-blocks. An email next to a phone number routes local, and so does a health term next to a capitalized word after Patient, Mr, Mrs or Ms.
+- v2 still passes: homoglyphs (Cyrillic lookalikes are not folded to Latin; solo bypass 0.614 in the fuzz), punctuation and line breaks inside a key (only spaces, dots and format characters are skipped), nested encodings (base64 of hex: 15/15 bypass), hex with separators or 0x prefixes, rot13, reversed text, and binary or encrypted hex (it looks like a hash, so a hash-shaped run is routed cloud on purpose). Case-insensitive person markers also widen the health rule, so `patient` or `ms` followed by a word plus a health term routes local.
 - Rule ids are a closed list. A class or rule added later needs a test and a mutant of its own.
 
 ## CI

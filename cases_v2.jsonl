@@ -1,0 +1,36 @@
+{"id": "zw-key", "bypass": "v2-invisible", "messages": ["Fix this config: api_key = {SK}EXAMPLE0123456789ABCDEF"], "transform": ["wj"], "expect": "local", "synthetic": true}
+{"id": "zw-ssn", "bypass": "v2-invisible", "messages": ["my ssn is 123-45-6789"], "transform": ["wj"], "expect": "local", "synthetic": true}
+{"id": "bidi-ghp", "bypass": "v2-invisible", "messages": ["git remote set-url origin https://{GHP}EXAMPLE0123456789ABCDEF@host/repo"], "transform": ["bidi"], "expect": "local", "synthetic": true}
+{"id": "bidi-health", "bypass": "v2-invisible", "messages": ["Patient Smith was prescribed insulin for diabetes"], "transform": ["bidi"], "expect": "local", "synthetic": true}
+{"id": "bidi-pk", "bypass": "v2-invisible", "messages": ["{PK}\nMIIEFAKEFAKEFAKE"], "transform": ["bidi"], "expect": "local", "synthetic": true}
+{"id": "nf-key", "bypass": "v2-nfkc", "messages": ["Fix this config: api_key = {SK}EXAMPLE0123456789ABCDEF"], "transform": ["fullwidth"], "expect": "local", "synthetic": true}
+{"id": "nf-ssn", "bypass": "v2-nfkc", "messages": ["my ssn is 123-45-6789"], "transform": ["fullwidth"], "expect": "local", "synthetic": true}
+{"id": "nf-aws", "bypass": "v2-nfkc", "messages": ["aws id {AKIA}EXAMPLE0123456789"], "transform": ["fullwidth"], "expect": "local", "synthetic": true}
+{"id": "case-key", "bypass": "v2-case", "messages": ["Fix this config: api_key = {SK}EXAMPLE0123456789ABCDEF"], "transform": ["case"], "expect": "local", "synthetic": true}
+{"id": "case-aws", "bypass": "v2-case", "messages": ["aws id {AKIA}EXAMPLE0123456789"], "transform": ["lower"], "expect": "local", "synthetic": true}
+{"id": "case-pk", "bypass": "v2-case", "messages": ["{PK}\nMIIEFAKEFAKEFAKE"], "transform": ["lower"], "expect": "local", "synthetic": true}
+{"id": "case-health", "bypass": "v2-case", "messages": ["Patient Smith was prescribed insulin for diabetes"], "transform": ["case"], "expect": "local", "synthetic": true}
+{"id": "hex-key", "bypass": "v2-hex", "messages": ["Fix this config: api_key = {SK}EXAMPLE0123456789ABCDEF"], "transform": ["hex"], "expect": "local", "synthetic": true}
+{"id": "hex-ssn", "bypass": "v2-hex", "messages": ["my ssn is 123-45-6789"], "transform": ["hex"], "expect": "local", "synthetic": true}
+{"id": "hex-pk", "bypass": "v2-hex", "messages": ["{PK}\nMIIEFAKEFAKEFAKE"], "transform": ["hex"], "expect": "local", "synthetic": true}
+{"id": "hex-health", "bypass": "v2-hex", "messages": ["Patient Smith was prescribed insulin for diabetes"], "transform": ["hex"], "expect": "local", "synthetic": true}
+{"id": "hex-case-key", "bypass": "v2-hex", "messages": ["Fix this config: api_key = {SK}EXAMPLE0123456789ABCDEF"], "transform": ["case", "hex"], "expect": "local", "synthetic": true}
+{"id": "hex-wj-ssn", "bypass": "v2-hex", "messages": ["my ssn is 123-45-6789"], "transform": ["wj", "hex"], "expect": "local", "synthetic": true}
+{"id": "hex-split", "bypass": "v2-hex", "messages": ["Fix this config: api_key = {SK}EXAMPLE0123456789ABCDEF"], "transform": ["hex", "split2"], "expect": "local", "synthetic": true}
+{"id": "b64-case-key", "bypass": "v2-b64", "messages": ["Fix this config: api_key = {SK}EXAMPLE0123456789ABCDEF"], "transform": ["case", "b64"], "expect": "local", "synthetic": true}
+{"id": "b64-wj-ssn", "bypass": "v2-b64", "messages": ["my ssn is 123-45-6789"], "transform": ["wj", "b64"], "expect": "local", "synthetic": true}
+{"id": "b64-bidi-ghp", "bypass": "v2-b64", "messages": ["git remote set-url origin https://{GHP}EXAMPLE0123456789ABCDEF@host/repo"], "transform": ["bidi", "b64"], "expect": "local", "synthetic": true}
+{"id": "url-key", "bypass": "v2-url", "messages": ["Fix this config: api_key = {SK}EXAMPLE0123456789ABCDEF"], "transform": ["url"], "expect": "local", "synthetic": true}
+{"id": "url-ssn", "bypass": "v2-url", "messages": ["my ssn is 123-45-6789"], "transform": ["url"], "expect": "local", "synthetic": true}
+{"id": "url-case-health", "bypass": "v2-url", "messages": ["Patient Smith was prescribed insulin for diabetes"], "transform": ["case", "url"], "expect": "local", "synthetic": true}
+{"id": "long-hex", "bypass": "v2-overlong", "messages": ["blob={LONGHEX}"], "expect": "local", "rule": "unclassified", "synthetic": true}
+{"id": "long-b64", "bypass": "v2-overlong", "messages": ["payload={LONGB64}"], "expect": "local", "rule": "unclassified", "synthetic": true}
+{"id": "ctl-hex-benign", "bypass": "v2-control", "messages": ["what is a mutex and when do I use one?"], "transform": ["hex"], "expect": "cloud", "synthetic": true}
+{"id": "ctl-b64-benign", "bypass": "v2-control", "messages": ["what is a mutex and when do I use one?"], "transform": ["b64"], "expect": "cloud", "synthetic": true}
+{"id": "ctl-url-benign", "bypass": "v2-control", "messages": ["what is a mutex and when do I use one?"], "transform": ["url"], "expect": "cloud", "synthetic": true}
+{"id": "ctl-case-benign", "bypass": "v2-control", "messages": ["How do I reverse a linked list in Python?"], "transform": ["case"], "expect": "cloud", "synthetic": true}
+{"id": "ctl-fullwidth-benign", "bypass": "v2-control", "messages": ["How do I reverse a linked list in Python?"], "transform": ["fullwidth"], "expect": "cloud", "synthetic": true}
+{"id": "ctl-invisible-benign", "bypass": "v2-control", "messages": ["How do I reverse a linked list in Python?"], "transform": ["wj"], "expect": "cloud", "synthetic": true}
+{"id": "ctl-sha256", "bypass": "v2-control", "messages": ["the checksum is 9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08"], "expect": "cloud", "synthetic": true}
+{"id": "ctl-uuid", "bypass": "v2-control", "messages": ["request id 123e4567-e89b-12d3-a456-426614174000 failed"], "expect": "cloud", "synthetic": true}
+{"id": "ctl-percent", "bypass": "v2-control", "messages": ["the discount is 100% off, see https://example.com/a%20b"], "expect": "cloud", "synthetic": true}

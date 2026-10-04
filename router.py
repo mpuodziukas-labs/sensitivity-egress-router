@@ -3,6 +3,8 @@ import base64
 import json
 import re
 import sys
+import unicodedata
+from urllib.parse import unquote
 
 DESTINATIONS = {"local": 0.50, "cloud": 0.10}  # synthetic cost per 1k tokens; local is dearer on purpose
 ALLOWED = {"clean": ("local", "cloud"), "secret": ("local",), "pii": ("local",), "health": ("local",), "unclassified": ("local",)}
@@ -82,8 +84,100 @@ def decode_b64(text):
             s = raw.decode("utf-8")
         except ValueError:
             continue
-        if s and sum(c.isprintable() for c in s) / len(s) >= 0.9:
+        if _printable(s):
             yield s
+
+
+# ---- v2 decode: canonical and decoded views, every one scanned ----
+MAX_RUN = 4096  # an encoded run longer than this is not decoded: unclassified, so local
+HEX_RUN = re.compile(r"[0-9A-Fa-f]{16,}")
+URL_ESC = re.compile(r"%[0-9A-Fa-f]{2}")
+_CI = lambda rx: re.compile(rx.pattern, rx.flags | re.I)
+SECRET_FOLD = [(r, _CI(rx)) for r, rx in SECRET_PLAIN] + [(r, _CI(rx)) for r, rx in SECRET_SPACED]
+PRIVATE_KEY_FOLD, PERSON_FOLD = _CI(PRIVATE_KEY), _CI(PERSON)
+
+
+def strip_invisible(text):
+    """Drop every format character (zero-width, bidi controls, soft hyphen, word joiner)."""
+    return "".join(c for c in text if unicodedata.category(c) != "Cf")
+
+
+def nfkc(text):
+    return unicodedata.normalize("NFKC", text)
+
+
+def canon(text):
+    return strip_invisible(nfkc(strip_invisible(text)))
+
+
+def canon_decoded(text):
+    return canon(text)
+
+
+def overlong(text):
+    return bool(re.search(r"[A-Za-z0-9+/_=-]{%d,}|(?:%%[0-9A-Fa-f]{2}){%d,}" % (MAX_RUN, MAX_RUN // 3), text))
+
+
+def _printable(s):
+    """Text, not bytes: invisible format characters count as text because an attacker adds them."""
+    return bool(s) and sum(c.isprintable() or c in "\n\r\t" or unicodedata.category(c) == "Cf" for c in s) / len(s) >= 0.9
+
+
+def decode_hex(text):
+    for m in HEX_RUN.findall(text):
+        for run in (m, m[1:]):  # a hex letter glued to the front shifts the byte alignment
+            try:
+                s = bytes.fromhex(run[: len(run) // 2 * 2]).decode("utf-8")
+            except ValueError:
+                continue
+            if _printable(s):
+                yield s
+
+
+def decode_url(text):
+    if URL_ESC.search(text):
+        s = unquote(text, errors="replace")
+        if s != text and _printable(s):
+            yield s
+
+
+def scan_folded(text):
+    """Case-insensitive pass: a swapped-case key prefix or header, or a swapped-case name, still matches."""
+    for rule, rx in SECRET_FOLD:
+        if rx.search(text):
+            return "secret", rule
+    if PRIVATE_KEY_FOLD.search(text):
+        return "secret", "private-key"
+    if HEALTH.search(text) and PERSON_FOLD.search(text):
+        return "health", "health-person"
+    return None
+
+
+def scan_views(text):
+    """Scan a text as is, then case-folded. Returns (class, rule) or None."""
+    return scan_plain(text) or scan_spaced(text) or scan_folded(text)
+
+
+def decoded_views(text):
+    for tag, gen in (("hex", decode_hex), ("url", decode_url), ("base64", decode_b64)):
+        for s in gen(text):
+            yield tag, s
+
+
+def classify_v2(texts):
+    for text in texts:
+        if overlong(text):
+            return "unclassified", "unclassified"  # too long to decode: unclassified is local
+    for text in texts:
+        view = canon(text)
+        hit = scan_views(view)
+        if hit:
+            return hit[0], hit[1] + "+canon"
+        for tag, dec in decoded_views(view):
+            hit = scan_views(canon_decoded(dec))
+            if hit:
+                return hit[0], hit[1] + "+" + tag
+    return None
 
 
 def classify(messages):
@@ -100,7 +194,7 @@ def classify(messages):
             hit = scan_plain(decoded)
             if hit:
                 return hit[0], hit[1] + "+base64"
-    return "clean", "clean"
+    return classify_v2(texts) or ("clean", "clean")
 
 
 def route(messages, local_up=True, classifier=None):

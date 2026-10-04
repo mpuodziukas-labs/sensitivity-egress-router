@@ -1,0 +1,568 @@
+.FFFFFFFFFFFF.FFFFFFFFFFFFFFF.........F..FFFFFFF                         [100%]
+=================================== FAILURES ===================================
+____________________ test_v2_case_routes_as_labeled[zw-key] ____________________
+
+row = {'bypass': 'v2-invisible', 'expect': 'local', 'id': 'zw-key', 'messages': ['Fi\u2060x t\u2060his\u2060 co\u2060nfi\u20...060api\u2060_ke\u2060y =\u2060 sk\u2060-EX\u2060AMP\u2060LE0\u2060123\u2060456\u2060789\u2060ABC\u2060DEF\u2060'], ...}
+
+    @pytest.mark.parametrize("row", V2, ids=lambda r: r["id"])
+    def test_v2_case_routes_as_labeled(row):
+        d = router.route(row["messages"])
+>       assert evaluate.as_expected(row, d), (row["expect"], d)
+E       AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E       assert False
+E        +  where False = <function as_expected at 0x106e3a700>({'bypass': 'v2-invisible', 'expect': 'local', 'id': 'zw-key', 'messages': ['Fi\u2060x t\u2060his\u2060 co\u2060nfi\u20...060api\u2060_ke\u2060y =\u2060 sk\u2060-EX\u2060AMP\u2060LE0\u2060123\u2060456\u2060789\u2060ABC\u2060DEF\u2060'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E        +    where <function as_expected at 0x106e3a700> = evaluate.as_expected
+
+tests/test_v2.py:77: AssertionError
+____________________ test_v2_case_routes_as_labeled[zw-ssn] ____________________
+
+row = {'bypass': 'v2-invisible', 'expect': 'local', 'id': 'zw-ssn', 'messages': ['my\u2060 ss\u2060n i\u2060s 1\u206023-\u206045-\u2060678\u20609'], ...}
+
+    @pytest.mark.parametrize("row", V2, ids=lambda r: r["id"])
+    def test_v2_case_routes_as_labeled(row):
+        d = router.route(row["messages"])
+>       assert evaluate.as_expected(row, d), (row["expect"], d)
+E       AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E       assert False
+E        +  where False = <function as_expected at 0x106e3a700>({'bypass': 'v2-invisible', 'expect': 'local', 'id': 'zw-ssn', 'messages': ['my\u2060 ss\u2060n i\u2060s 1\u206023-\u206045-\u2060678\u20609'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E        +    where <function as_expected at 0x106e3a700> = evaluate.as_expected
+
+tests/test_v2.py:77: AssertionError
+___________________ test_v2_case_routes_as_labeled[bidi-ghp] ___________________
+
+row = {'bypass': 'v2-invisible', 'expect': 'local', 'id': 'bidi-ghp', 'messages': ['git\u2066 rem\u202eote \xadset-\u2066url...n h\u2066ttps\u202e://g\xadhp_E\u2066XAMP\u202eLE01\xad2345\u20666789\u202eABCD\xadEF@h\u2066ost/\u202erepo\xad'], ...}
+
+    @pytest.mark.parametrize("row", V2, ids=lambda r: r["id"])
+    def test_v2_case_routes_as_labeled(row):
+        d = router.route(row["messages"])
+>       assert evaluate.as_expected(row, d), (row["expect"], d)
+E       AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E       assert False
+E        +  where False = <function as_expected at 0x106e3a700>({'bypass': 'v2-invisible', 'expect': 'local', 'id': 'bidi-ghp', 'messages': ['git\u2066 rem\u202eote \xadset-\u2066url...n h\u2066ttps\u202e://g\xadhp_E\u2066XAMP\u202eLE01\xad2345\u20666789\u202eABCD\xadEF@h\u2066ost/\u202erepo\xad'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E        +    where <function as_expected at 0x106e3a700> = evaluate.as_expected
+
+tests/test_v2.py:77: AssertionError
+_________________ test_v2_case_routes_as_labeled[bidi-health] __________________
+
+row = {'bypass': 'v2-invisible', 'expect': 'local', 'id': 'bidi-health', 'messages': ['Pat\u2066ient\u202e Smi\xadth w\u2066as p\u202eresc\xadribe\u2066d in\u202esuli\xadn fo\u2066r di\u202eabet\xades'], ...}
+
+    @pytest.mark.parametrize("row", V2, ids=lambda r: r["id"])
+    def test_v2_case_routes_as_labeled(row):
+        d = router.route(row["messages"])
+>       assert evaluate.as_expected(row, d), (row["expect"], d)
+E       AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E       assert False
+E        +  where False = <function as_expected at 0x106e3a700>({'bypass': 'v2-invisible', 'expect': 'local', 'id': 'bidi-health', 'messages': ['Pat\u2066ient\u202e Smi\xadth w\u2066as p\u202eresc\xadribe\u2066d in\u202esuli\xadn fo\u2066r di\u202eabet\xades'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E        +    where <function as_expected at 0x106e3a700> = evaluate.as_expected
+
+tests/test_v2.py:77: AssertionError
+___________________ test_v2_case_routes_as_labeled[bidi-pk] ____________________
+
+row = {'bypass': 'v2-invisible', 'expect': 'local', 'id': 'bidi-pk', 'messages': ['---\u2066--BE\u202eGIN \xadRSA \u2066PRIV\u202eATE \xadKEY-\u2066----\u202e\nMII\xadEFAK\u2066EFAK\u202eEFAK\xadE'], ...}
+
+    @pytest.mark.parametrize("row", V2, ids=lambda r: r["id"])
+    def test_v2_case_routes_as_labeled(row):
+        d = router.route(row["messages"])
+>       assert evaluate.as_expected(row, d), (row["expect"], d)
+E       AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E       assert False
+E        +  where False = <function as_expected at 0x106e3a700>({'bypass': 'v2-invisible', 'expect': 'local', 'id': 'bidi-pk', 'messages': ['---\u2066--BE\u202eGIN \xadRSA \u2066PRIV\u202eATE \xadKEY-\u2066----\u202e\nMII\xadEFAK\u2066EFAK\u202eEFAK\xadE'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E        +    where <function as_expected at 0x106e3a700> = evaluate.as_expected
+
+tests/test_v2.py:77: AssertionError
+____________________ test_v2_case_routes_as_labeled[nf-key] ____________________
+
+row = {'bypass': 'v2-nfkc', 'expect': 'local', 'id': 'nf-key', 'messages': ['Ｆｉｘ ｔｈｉｓ ｃｏｎｆｉｇ： ａｐｉ＿ｋｅｙ ＝ ｓｋ－ＥＸＡＭＰＬＥ０１２３４５６７８９ＡＢＣＤＥＦ'], ...}
+
+    @pytest.mark.parametrize("row", V2, ids=lambda r: r["id"])
+    def test_v2_case_routes_as_labeled(row):
+        d = router.route(row["messages"])
+>       assert evaluate.as_expected(row, d), (row["expect"], d)
+E       AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E       assert False
+E        +  where False = <function as_expected at 0x106e3a700>({'bypass': 'v2-nfkc', 'expect': 'local', 'id': 'nf-key', 'messages': ['Ｆｉｘ ｔｈｉｓ ｃｏｎｆｉｇ： ａｐｉ＿ｋｅｙ ＝ ｓｋ－ＥＸＡＭＰＬＥ０１２３４５６７８９ＡＢＣＤＥＦ'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E        +    where <function as_expected at 0x106e3a700> = evaluate.as_expected
+
+tests/test_v2.py:77: AssertionError
+____________________ test_v2_case_routes_as_labeled[nf-ssn] ____________________
+
+row = {'bypass': 'v2-nfkc', 'expect': 'local', 'id': 'nf-ssn', 'messages': ['ｍｙ ｓｓｎ ｉｓ １２３－４５－６７８９'], ...}
+
+    @pytest.mark.parametrize("row", V2, ids=lambda r: r["id"])
+    def test_v2_case_routes_as_labeled(row):
+        d = router.route(row["messages"])
+>       assert evaluate.as_expected(row, d), (row["expect"], d)
+E       AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E       assert False
+E        +  where False = <function as_expected at 0x106e3a700>({'bypass': 'v2-nfkc', 'expect': 'local', 'id': 'nf-ssn', 'messages': ['ｍｙ ｓｓｎ ｉｓ １２３－４５－６７８９'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E        +    where <function as_expected at 0x106e3a700> = evaluate.as_expected
+
+tests/test_v2.py:77: AssertionError
+____________________ test_v2_case_routes_as_labeled[nf-aws] ____________________
+
+row = {'bypass': 'v2-nfkc', 'expect': 'local', 'id': 'nf-aws', 'messages': ['ａｗｓ ｉｄ ＡＫＩＡＥＸＡＭＰＬＥ０１２３４５６７８９'], ...}
+
+    @pytest.mark.parametrize("row", V2, ids=lambda r: r["id"])
+    def test_v2_case_routes_as_labeled(row):
+        d = router.route(row["messages"])
+>       assert evaluate.as_expected(row, d), (row["expect"], d)
+E       AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E       assert False
+E        +  where False = <function as_expected at 0x106e3a700>({'bypass': 'v2-nfkc', 'expect': 'local', 'id': 'nf-aws', 'messages': ['ａｗｓ ｉｄ ＡＫＩＡＥＸＡＭＰＬＥ０１２３４５６７８９'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E        +    where <function as_expected at 0x106e3a700> = evaluate.as_expected
+
+tests/test_v2.py:77: AssertionError
+___________________ test_v2_case_routes_as_labeled[case-key] ___________________
+
+row = {'bypass': 'v2-case', 'expect': 'local', 'id': 'case-key', 'messages': ['fiX ThIs cOnFiG: aPi_kEy = sK-eXaMpLe0123456789AbCdEf'], ...}
+
+    @pytest.mark.parametrize("row", V2, ids=lambda r: r["id"])
+    def test_v2_case_routes_as_labeled(row):
+        d = router.route(row["messages"])
+>       assert evaluate.as_expected(row, d), (row["expect"], d)
+E       AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E       assert False
+E        +  where False = <function as_expected at 0x106e3a700>({'bypass': 'v2-case', 'expect': 'local', 'id': 'case-key', 'messages': ['fiX ThIs cOnFiG: aPi_kEy = sK-eXaMpLe0123456789AbCdEf'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E        +    where <function as_expected at 0x106e3a700> = evaluate.as_expected
+
+tests/test_v2.py:77: AssertionError
+___________________ test_v2_case_routes_as_labeled[case-aws] ___________________
+
+row = {'bypass': 'v2-case', 'expect': 'local', 'id': 'case-aws', 'messages': ['aws id akiaexample0123456789'], ...}
+
+    @pytest.mark.parametrize("row", V2, ids=lambda r: r["id"])
+    def test_v2_case_routes_as_labeled(row):
+        d = router.route(row["messages"])
+>       assert evaluate.as_expected(row, d), (row["expect"], d)
+E       AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E       assert False
+E        +  where False = <function as_expected at 0x106e3a700>({'bypass': 'v2-case', 'expect': 'local', 'id': 'case-aws', 'messages': ['aws id akiaexample0123456789'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E        +    where <function as_expected at 0x106e3a700> = evaluate.as_expected
+
+tests/test_v2.py:77: AssertionError
+___________________ test_v2_case_routes_as_labeled[case-pk] ____________________
+
+row = {'bypass': 'v2-case', 'expect': 'local', 'id': 'case-pk', 'messages': ['-----begin rsa private key-----\nmiiefakefakefake'], ...}
+
+    @pytest.mark.parametrize("row", V2, ids=lambda r: r["id"])
+    def test_v2_case_routes_as_labeled(row):
+        d = router.route(row["messages"])
+>       assert evaluate.as_expected(row, d), (row["expect"], d)
+E       AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E       assert False
+E        +  where False = <function as_expected at 0x106e3a700>({'bypass': 'v2-case', 'expect': 'local', 'id': 'case-pk', 'messages': ['-----begin rsa private key-----\nmiiefakefakefake'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E        +    where <function as_expected at 0x106e3a700> = evaluate.as_expected
+
+tests/test_v2.py:77: AssertionError
+_________________ test_v2_case_routes_as_labeled[case-health] __________________
+
+row = {'bypass': 'v2-case', 'expect': 'local', 'id': 'case-health', 'messages': ['paTiEnT smItH WaS PrEsCrIbEd iNsUlIn fOr dIaBeTeS'], ...}
+
+    @pytest.mark.parametrize("row", V2, ids=lambda r: r["id"])
+    def test_v2_case_routes_as_labeled(row):
+        d = router.route(row["messages"])
+>       assert evaluate.as_expected(row, d), (row["expect"], d)
+E       AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E       assert False
+E        +  where False = <function as_expected at 0x106e3a700>({'bypass': 'v2-case', 'expect': 'local', 'id': 'case-health', 'messages': ['paTiEnT smItH WaS PrEsCrIbEd iNsUlIn fOr dIaBeTeS'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E        +    where <function as_expected at 0x106e3a700> = evaluate.as_expected
+
+tests/test_v2.py:77: AssertionError
+___________________ test_v2_case_routes_as_labeled[hex-key] ____________________
+
+row = {'bypass': 'v2-hex', 'expect': 'local', 'id': 'hex-key', 'messages': ['hex: 466978207468697320636f6e6669673a206170695f6b6579203d20736b2d4558414d504c4530313233343536373839414243444546'], ...}
+
+    @pytest.mark.parametrize("row", V2, ids=lambda r: r["id"])
+    def test_v2_case_routes_as_labeled(row):
+        d = router.route(row["messages"])
+>       assert evaluate.as_expected(row, d), (row["expect"], d)
+E       AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E       assert False
+E        +  where False = <function as_expected at 0x106e3a700>({'bypass': 'v2-hex', 'expect': 'local', 'id': 'hex-key', 'messages': ['hex: 466978207468697320636f6e6669673a206170695f6b6579203d20736b2d4558414d504c4530313233343536373839414243444546'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E        +    where <function as_expected at 0x106e3a700> = evaluate.as_expected
+
+tests/test_v2.py:77: AssertionError
+___________________ test_v2_case_routes_as_labeled[hex-ssn] ____________________
+
+row = {'bypass': 'v2-hex', 'expect': 'local', 'id': 'hex-ssn', 'messages': ['hex: 6d792073736e206973203132332d34352d36373839'], ...}
+
+    @pytest.mark.parametrize("row", V2, ids=lambda r: r["id"])
+    def test_v2_case_routes_as_labeled(row):
+        d = router.route(row["messages"])
+>       assert evaluate.as_expected(row, d), (row["expect"], d)
+E       AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E       assert False
+E        +  where False = <function as_expected at 0x106e3a700>({'bypass': 'v2-hex', 'expect': 'local', 'id': 'hex-ssn', 'messages': ['hex: 6d792073736e206973203132332d34352d36373839'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E        +    where <function as_expected at 0x106e3a700> = evaluate.as_expected
+
+tests/test_v2.py:77: AssertionError
+____________________ test_v2_case_routes_as_labeled[hex-pk] ____________________
+
+row = {'bypass': 'v2-hex', 'expect': 'local', 'id': 'hex-pk', 'messages': ['hex: 2d2d2d2d2d424547494e205253412050524956415445204b45592d2d2d2d2d0a4d49494546414b4546414b4546414b45'], ...}
+
+    @pytest.mark.parametrize("row", V2, ids=lambda r: r["id"])
+    def test_v2_case_routes_as_labeled(row):
+        d = router.route(row["messages"])
+>       assert evaluate.as_expected(row, d), (row["expect"], d)
+E       AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E       assert False
+E        +  where False = <function as_expected at 0x106e3a700>({'bypass': 'v2-hex', 'expect': 'local', 'id': 'hex-pk', 'messages': ['hex: 2d2d2d2d2d424547494e205253412050524956415445204b45592d2d2d2d2d0a4d49494546414b4546414b4546414b45'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E        +    where <function as_expected at 0x106e3a700> = evaluate.as_expected
+
+tests/test_v2.py:77: AssertionError
+__________________ test_v2_case_routes_as_labeled[hex-health] __________________
+
+row = {'bypass': 'v2-hex', 'expect': 'local', 'id': 'hex-health', 'messages': ['hex: 50617469656e7420536d69746820776173207072657363726962656420696e73756c696e20666f72206469616265746573'], ...}
+
+    @pytest.mark.parametrize("row", V2, ids=lambda r: r["id"])
+    def test_v2_case_routes_as_labeled(row):
+        d = router.route(row["messages"])
+>       assert evaluate.as_expected(row, d), (row["expect"], d)
+E       AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E       assert False
+E        +  where False = <function as_expected at 0x106e3a700>({'bypass': 'v2-hex', 'expect': 'local', 'id': 'hex-health', 'messages': ['hex: 50617469656e7420536d69746820776173207072657363726962656420696e73756c696e20666f72206469616265746573'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E        +    where <function as_expected at 0x106e3a700> = evaluate.as_expected
+
+tests/test_v2.py:77: AssertionError
+_________________ test_v2_case_routes_as_labeled[hex-case-key] _________________
+
+row = {'bypass': 'v2-hex', 'expect': 'local', 'id': 'hex-case-key', 'messages': ['hex: 666958205468497320634f6e4669473a206150695f6b4579203d20734b2d6558614d704c6530313233343536373839416243644566'], ...}
+
+    @pytest.mark.parametrize("row", V2, ids=lambda r: r["id"])
+    def test_v2_case_routes_as_labeled(row):
+        d = router.route(row["messages"])
+>       assert evaluate.as_expected(row, d), (row["expect"], d)
+E       AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E       assert False
+E        +  where False = <function as_expected at 0x106e3a700>({'bypass': 'v2-hex', 'expect': 'local', 'id': 'hex-case-key', 'messages': ['hex: 666958205468497320634f6e4669473a206150695f6b4579203d20734b2d6558614d704c6530313233343536373839416243644566'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E        +    where <function as_expected at 0x106e3a700> = evaluate.as_expected
+
+tests/test_v2.py:77: AssertionError
+__________________ test_v2_case_routes_as_labeled[hex-wj-ssn] __________________
+
+row = {'bypass': 'v2-hex', 'expect': 'local', 'id': 'hex-wj-ssn', 'messages': ['hex: 6d79e281a0207373e281a06e2069e281a0732031e281a032332de281a034352de281a0363738e281a039'], ...}
+
+    @pytest.mark.parametrize("row", V2, ids=lambda r: r["id"])
+    def test_v2_case_routes_as_labeled(row):
+        d = router.route(row["messages"])
+>       assert evaluate.as_expected(row, d), (row["expect"], d)
+E       AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E       assert False
+E        +  where False = <function as_expected at 0x106e3a700>({'bypass': 'v2-hex', 'expect': 'local', 'id': 'hex-wj-ssn', 'messages': ['hex: 6d79e281a0207373e281a06e2069e281a0732031e281a032332de281a034352de281a0363738e281a039'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E        +    where <function as_expected at 0x106e3a700> = evaluate.as_expected
+
+tests/test_v2.py:77: AssertionError
+__________________ test_v2_case_routes_as_labeled[hex-split] ___________________
+
+row = {'bypass': 'v2-hex', 'expect': 'local', 'id': 'hex-split', 'messages': ['hex: 466978207468697320636f6e6669673a206170695f6b657920', '3d20736b2d4558414d504c4530313233343536373839414243444546'], ...}
+
+    @pytest.mark.parametrize("row", V2, ids=lambda r: r["id"])
+    def test_v2_case_routes_as_labeled(row):
+        d = router.route(row["messages"])
+>       assert evaluate.as_expected(row, d), (row["expect"], d)
+E       AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E       assert False
+E        +  where False = <function as_expected at 0x106e3a700>({'bypass': 'v2-hex', 'expect': 'local', 'id': 'hex-split', 'messages': ['hex: 466978207468697320636f6e6669673a206170695f6b657920', '3d20736b2d4558414d504c4530313233343536373839414243444546'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E        +    where <function as_expected at 0x106e3a700> = evaluate.as_expected
+
+tests/test_v2.py:77: AssertionError
+_________________ test_v2_case_routes_as_labeled[b64-case-key] _________________
+
+row = {'bypass': 'v2-b64', 'expect': 'local', 'id': 'b64-case-key', 'messages': ['payload=ZmlYIFRoSXMgY09uRmlHOiBhUGlfa0V5ID0gc0stZVhhTXBMZTAxMjM0NTY3ODlBYkNkRWY='], ...}
+
+    @pytest.mark.parametrize("row", V2, ids=lambda r: r["id"])
+    def test_v2_case_routes_as_labeled(row):
+        d = router.route(row["messages"])
+>       assert evaluate.as_expected(row, d), (row["expect"], d)
+E       AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E       assert False
+E        +  where False = <function as_expected at 0x106e3a700>({'bypass': 'v2-b64', 'expect': 'local', 'id': 'b64-case-key', 'messages': ['payload=ZmlYIFRoSXMgY09uRmlHOiBhUGlfa0V5ID0gc0stZVhhTXBMZTAxMjM0NTY3ODlBYkNkRWY='], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E        +    where <function as_expected at 0x106e3a700> = evaluate.as_expected
+
+tests/test_v2.py:77: AssertionError
+__________________ test_v2_case_routes_as_labeled[b64-wj-ssn] __________________
+
+row = {'bypass': 'v2-b64', 'expect': 'local', 'id': 'b64-wj-ssn', 'messages': ['payload=bXnigaAgc3PigaBuIGnigaBzIDHigaAyMy3igaA0NS3igaA2NzjigaA5'], ...}
+
+    @pytest.mark.parametrize("row", V2, ids=lambda r: r["id"])
+    def test_v2_case_routes_as_labeled(row):
+        d = router.route(row["messages"])
+>       assert evaluate.as_expected(row, d), (row["expect"], d)
+E       AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E       assert False
+E        +  where False = <function as_expected at 0x106e3a700>({'bypass': 'v2-b64', 'expect': 'local', 'id': 'b64-wj-ssn', 'messages': ['payload=bXnigaAgc3PigaBuIGnigaBzIDHigaAyMy3igaA0NS3igaA2NzjigaA5'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E        +    where <function as_expected at 0x106e3a700> = evaluate.as_expected
+
+tests/test_v2.py:77: AssertionError
+_________________ test_v2_case_routes_as_labeled[b64-bidi-ghp] _________________
+
+row = {'bypass': 'v2-b64', 'expect': 'local', 'id': 'b64-bidi-ghp', 'messages': ['payload=Z2l04oGmIHJlbeKArm90ZSDCrXNldC3iga...8KtaW4gaOKBpnR0cHPigK46Ly9nwq1ocF9F4oGmWEFNUOKArkxFMDHCrTIzNDXigaY2Nzg54oCuQUJDRMKtRUZAaOKBpm9zdC/igK5yZXBvwq0='], ...}
+
+    @pytest.mark.parametrize("row", V2, ids=lambda r: r["id"])
+    def test_v2_case_routes_as_labeled(row):
+        d = router.route(row["messages"])
+>       assert evaluate.as_expected(row, d), (row["expect"], d)
+E       AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E       assert False
+E        +  where False = <function as_expected at 0x106e3a700>({'bypass': 'v2-b64', 'expect': 'local', 'id': 'b64-bidi-ghp', 'messages': ['payload=Z2l04oGmIHJlbeKArm90ZSDCrXNldC3iga...8KtaW4gaOKBpnR0cHPigK46Ly9nwq1ocF9F4oGmWEFNUOKArkxFMDHCrTIzNDXigaY2Nzg54oCuQUJDRMKtRUZAaOKBpm9zdC/igK5yZXBvwq0='], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E        +    where <function as_expected at 0x106e3a700> = evaluate.as_expected
+
+tests/test_v2.py:77: AssertionError
+___________________ test_v2_case_routes_as_labeled[url-key] ____________________
+
+row = {'bypass': 'v2-url', 'expect': 'local', 'id': 'url-key', 'messages': ['Fix%20this%20config%3A%20api_key%20%3D%20sk-EXAMPLE0123456789ABCDEF'], ...}
+
+    @pytest.mark.parametrize("row", V2, ids=lambda r: r["id"])
+    def test_v2_case_routes_as_labeled(row):
+        d = router.route(row["messages"])
+>       assert evaluate.as_expected(row, d), (row["expect"], d)
+E       AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E       assert False
+E        +  where False = <function as_expected at 0x106e3a700>({'bypass': 'v2-url', 'expect': 'local', 'id': 'url-key', 'messages': ['Fix%20this%20config%3A%20api_key%20%3D%20sk-EXAMPLE0123456789ABCDEF'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E        +    where <function as_expected at 0x106e3a700> = evaluate.as_expected
+
+tests/test_v2.py:77: AssertionError
+___________________ test_v2_case_routes_as_labeled[url-ssn] ____________________
+
+row = {'bypass': 'v2-url', 'expect': 'local', 'id': 'url-ssn', 'messages': ['my%20ssn%20is%20123-45-6789'], ...}
+
+    @pytest.mark.parametrize("row", V2, ids=lambda r: r["id"])
+    def test_v2_case_routes_as_labeled(row):
+        d = router.route(row["messages"])
+>       assert evaluate.as_expected(row, d), (row["expect"], d)
+E       AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E       assert False
+E        +  where False = <function as_expected at 0x106e3a700>({'bypass': 'v2-url', 'expect': 'local', 'id': 'url-ssn', 'messages': ['my%20ssn%20is%20123-45-6789'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E        +    where <function as_expected at 0x106e3a700> = evaluate.as_expected
+
+tests/test_v2.py:77: AssertionError
+_______________ test_v2_case_routes_as_labeled[url-case-health] ________________
+
+row = {'bypass': 'v2-url', 'expect': 'local', 'id': 'url-case-health', 'messages': ['paTiEnT%20smItH%20WaS%20PrEsCrIbEd%20iNsUlIn%20fOr%20dIaBeTeS'], ...}
+
+    @pytest.mark.parametrize("row", V2, ids=lambda r: r["id"])
+    def test_v2_case_routes_as_labeled(row):
+        d = router.route(row["messages"])
+>       assert evaluate.as_expected(row, d), (row["expect"], d)
+E       AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E       assert False
+E        +  where False = <function as_expected at 0x106e3a700>({'bypass': 'v2-url', 'expect': 'local', 'id': 'url-case-health', 'messages': ['paTiEnT%20smItH%20WaS%20PrEsCrIbEd%20iNsUlIn%20fOr%20dIaBeTeS'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E        +    where <function as_expected at 0x106e3a700> = evaluate.as_expected
+
+tests/test_v2.py:77: AssertionError
+___________________ test_v2_case_routes_as_labeled[long-hex] ___________________
+
+row = {'bypass': 'v2-overlong', 'expect': 'local', 'id': 'long-hex', 'messages': ['blob=616161616161616161616161616161616161...161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161'], ...}
+
+    @pytest.mark.parametrize("row", V2, ids=lambda r: r["id"])
+    def test_v2_case_routes_as_labeled(row):
+        d = router.route(row["messages"])
+>       assert evaluate.as_expected(row, d), (row["expect"], d)
+E       AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E       assert False
+E        +  where False = <function as_expected at 0x106e3a700>({'bypass': 'v2-overlong', 'expect': 'local', 'id': 'long-hex', 'messages': ['blob=616161616161616161616161616161616161...161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E        +    where <function as_expected at 0x106e3a700> = evaluate.as_expected
+
+tests/test_v2.py:77: AssertionError
+___________________ test_v2_case_routes_as_labeled[long-b64] ___________________
+
+row = {'bypass': 'v2-overlong', 'expect': 'local', 'id': 'long-b64', 'messages': ['payload=QUJDQUJDQUJDQUJDQUJDQUJDQUJDQUJDQ...UJDQUJDQUJDQUJDQUJDQUJDQUJDQUJDQUJDQUJDQUJDQUJDQUJDQUJDQUJDQUJDQUJDQUJDQUJDQUJDQUJDQUJDQUJDQUJDQUJDQUJDQUJDQUJD'], ...}
+
+    @pytest.mark.parametrize("row", V2, ids=lambda r: r["id"])
+    def test_v2_case_routes_as_labeled(row):
+        d = router.route(row["messages"])
+>       assert evaluate.as_expected(row, d), (row["expect"], d)
+E       AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E       assert False
+E        +  where False = <function as_expected at 0x106e3a700>({'bypass': 'v2-overlong', 'expect': 'local', 'id': 'long-b64', 'messages': ['payload=QUJDQUJDQUJDQUJDQUJDQUJDQUJDQUJDQ...UJDQUJDQUJDQUJDQUJDQUJDQUJDQUJDQUJDQUJDQUJDQUJDQUJDQUJDQUJDQUJDQUJDQUJDQUJDQUJDQUJDQUJDQUJDQUJDQUJDQUJDQUJDQUJD'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E        +    where <function as_expected at 0x106e3a700> = evaluate.as_expected
+
+tests/test_v2.py:77: AssertionError
+__________________ test_v2_overlong_run_is_unclassified_local __________________
+
+    def test_v2_overlong_run_is_unclassified_local():
+        d = router.route(["blob=" + "61" * 5000])
+>       assert (d["class"], d["destination"], d["rule"]) == ("unclassified", "local", "unclassified")
+E       AssertionError: assert ('clean', 'cloud', 'clean') == ('unclassifie...unclassified')
+E         
+E         At index 0 diff: 'clean' != 'unclassified'
+E         Use -v to get more diff
+
+tests/test_v2.py:82: AssertionError
+_____________________ test_mutant_invisible_strip_removed ______________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x106ef9d10>
+
+    def test_mutant_invisible_strip_removed(monkeypatch):
+>       mut(monkeypatch, "strip_invisible", lambda t: t)
+
+tests/test_v2.py:106: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x106ef9d10>
+name = 'strip_invisible'
+value = <function test_mutant_invisible_strip_removed.<locals>.<lambda> at 0x106ede840>
+
+    def mut(monkeypatch, name, value):
+        real = table()
+>       monkeypatch.setattr(router, name, value)
+E       AttributeError: <module 'router' from '~/proof-artifacts/sensitivity-egress-router/router.py'> has no attribute 'strip_invisible'
+
+tests/test_v2.py:101: AttributeError
+___________________________ test_mutant_nfkc_removed ___________________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x106ef3fd0>
+
+    def test_mutant_nfkc_removed(monkeypatch):
+>       mut(monkeypatch, "nfkc", lambda t: t)
+
+tests/test_v2.py:110: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x106ef3fd0>
+name = 'nfkc'
+value = <function test_mutant_nfkc_removed.<locals>.<lambda> at 0x106edea20>
+
+    def mut(monkeypatch, name, value):
+        real = table()
+>       monkeypatch.setattr(router, name, value)
+E       AttributeError: <module 'router' from '~/proof-artifacts/sensitivity-egress-router/router.py'> has no attribute 'nfkc'
+
+tests/test_v2.py:101: AttributeError
+______________________ test_mutant_casefold_scan_removed _______________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x106efd550>
+
+    def test_mutant_casefold_scan_removed(monkeypatch):
+>       mut(monkeypatch, "scan_folded", lambda t: None)
+
+tests/test_v2.py:114: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x106efd550>
+name = 'scan_folded'
+value = <function test_mutant_casefold_scan_removed.<locals>.<lambda> at 0x106edd6c0>
+
+    def mut(monkeypatch, name, value):
+        real = table()
+>       monkeypatch.setattr(router, name, value)
+E       AttributeError: <module 'router' from '~/proof-artifacts/sensitivity-egress-router/router.py'> has no attribute 'scan_folded'
+
+tests/test_v2.py:101: AttributeError
+________________________ test_mutant_hex_decode_removed ________________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x106ee04d0>
+
+    def test_mutant_hex_decode_removed(monkeypatch):
+>       mut(monkeypatch, "decode_hex", lambda t: [])
+
+tests/test_v2.py:118: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x106ee04d0>
+name = 'decode_hex'
+value = <function test_mutant_hex_decode_removed.<locals>.<lambda> at 0x106ede3e0>
+
+    def mut(monkeypatch, name, value):
+        real = table()
+>       monkeypatch.setattr(router, name, value)
+E       AttributeError: <module 'router' from '~/proof-artifacts/sensitivity-egress-router/router.py'> has no attribute 'decode_hex'
+
+tests/test_v2.py:101: AttributeError
+________________________ test_mutant_url_decode_removed ________________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x106e965d0>
+
+    def test_mutant_url_decode_removed(monkeypatch):
+>       mut(monkeypatch, "decode_url", lambda t: [])
+
+tests/test_v2.py:122: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x106e965d0>
+name = 'decode_url'
+value = <function test_mutant_url_decode_removed.<locals>.<lambda> at 0x106ede5c0>
+
+    def mut(monkeypatch, name, value):
+        real = table()
+>       monkeypatch.setattr(router, name, value)
+E       AttributeError: <module 'router' from '~/proof-artifacts/sensitivity-egress-router/router.py'> has no attribute 'decode_url'
+
+tests/test_v2.py:101: AttributeError
+_________________ test_mutant_decoded_views_not_canonicalized __________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x106e3f590>
+
+    def test_mutant_decoded_views_not_canonicalized(monkeypatch):
+>       mut(monkeypatch, "canon_decoded", lambda t: t)
+
+tests/test_v2.py:126: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x106e3f590>
+name = 'canon_decoded'
+value = <function test_mutant_decoded_views_not_canonicalized.<locals>.<lambda> at 0x106edeac0>
+
+    def mut(monkeypatch, name, value):
+        real = table()
+>       monkeypatch.setattr(router, name, value)
+E       AttributeError: <module 'router' from '~/proof-artifacts/sensitivity-egress-router/router.py'> has no attribute 'canon_decoded'
+
+tests/test_v2.py:101: AttributeError
+__________________ test_mutant_overlong_run_not_failed_closed __________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x106efc250>
+
+    def test_mutant_overlong_run_not_failed_closed(monkeypatch):
+>       mut(monkeypatch, "MAX_RUN", 10 ** 9)
+
+tests/test_v2.py:130: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x106efc250>
+name = 'MAX_RUN', value = 1000000000
+
+    def mut(monkeypatch, name, value):
+        real = table()
+>       monkeypatch.setattr(router, name, value)
+E       AttributeError: <module 'router' from '~/proof-artifacts/sensitivity-egress-router/router.py'> has no attribute 'MAX_RUN'
+
+tests/test_v2.py:101: AttributeError
+=========================== short test summary info ============================
+FAILED tests/test_v2.py::test_v2_case_routes_as_labeled[zw-key] - AssertionEr...
+FAILED tests/test_v2.py::test_v2_case_routes_as_labeled[zw-ssn] - AssertionEr...
+FAILED tests/test_v2.py::test_v2_case_routes_as_labeled[bidi-ghp] - Assertion...
+FAILED tests/test_v2.py::test_v2_case_routes_as_labeled[bidi-health] - Assert...
+FAILED tests/test_v2.py::test_v2_case_routes_as_labeled[bidi-pk] - AssertionE...
+FAILED tests/test_v2.py::test_v2_case_routes_as_labeled[nf-key] - AssertionEr...
+FAILED tests/test_v2.py::test_v2_case_routes_as_labeled[nf-ssn] - AssertionEr...
+FAILED tests/test_v2.py::test_v2_case_routes_as_labeled[nf-aws] - AssertionEr...
+FAILED tests/test_v2.py::test_v2_case_routes_as_labeled[case-key] - Assertion...
+FAILED tests/test_v2.py::test_v2_case_routes_as_labeled[case-aws] - Assertion...
+FAILED tests/test_v2.py::test_v2_case_routes_as_labeled[case-pk] - AssertionE...
+FAILED tests/test_v2.py::test_v2_case_routes_as_labeled[case-health] - Assert...
+FAILED tests/test_v2.py::test_v2_case_routes_as_labeled[hex-key] - AssertionE...
+FAILED tests/test_v2.py::test_v2_case_routes_as_labeled[hex-ssn] - AssertionE...
+FAILED tests/test_v2.py::test_v2_case_routes_as_labeled[hex-pk] - AssertionEr...
+FAILED tests/test_v2.py::test_v2_case_routes_as_labeled[hex-health] - Asserti...
+FAILED tests/test_v2.py::test_v2_case_routes_as_labeled[hex-case-key] - Asser...
+FAILED tests/test_v2.py::test_v2_case_routes_as_labeled[hex-wj-ssn] - Asserti...
+FAILED tests/test_v2.py::test_v2_case_routes_as_labeled[hex-split] - Assertio...
+FAILED tests/test_v2.py::test_v2_case_routes_as_labeled[b64-case-key] - Asser...
+FAILED tests/test_v2.py::test_v2_case_routes_as_labeled[b64-wj-ssn] - Asserti...
+FAILED tests/test_v2.py::test_v2_case_routes_as_labeled[b64-bidi-ghp] - Asser...
+FAILED tests/test_v2.py::test_v2_case_routes_as_labeled[url-key] - AssertionE...
+FAILED tests/test_v2.py::test_v2_case_routes_as_labeled[url-ssn] - AssertionE...
+FAILED tests/test_v2.py::test_v2_case_routes_as_labeled[url-case-health] - As...
+FAILED tests/test_v2.py::test_v2_case_routes_as_labeled[long-hex] - Assertion...
+FAILED tests/test_v2.py::test_v2_case_routes_as_labeled[long-b64] - Assertion...
+FAILED tests/test_v2.py::test_v2_overlong_run_is_unclassified_local - Asserti...
+FAILED tests/test_v2.py::test_mutant_invisible_strip_removed - AttributeError...
+FAILED tests/test_v2.py::test_mutant_nfkc_removed - AttributeError: <module '...
+FAILED tests/test_v2.py::test_mutant_casefold_scan_removed - AttributeError: ...
+FAILED tests/test_v2.py::test_mutant_hex_decode_removed - AttributeError: <mo...
+FAILED tests/test_v2.py::test_mutant_url_decode_removed - AttributeError: <mo...
+FAILED tests/test_v2.py::test_mutant_decoded_views_not_canonicalized - Attrib...
+FAILED tests/test_v2.py::test_mutant_overlong_run_not_failed_closed - Attribu...
+35 failed, 13 passed in 17.78s
+rc=1
