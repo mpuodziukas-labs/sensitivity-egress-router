@@ -1,0 +1,47 @@
+{"id": "b00", "messages": ["How do I reverse a linked list in Python?"], "synthetic": true}
+{"id": "b01", "messages": ["Explain Python's GIL in two paragraphs."], "synthetic": true}
+{"id": "b02", "messages": ["def fib(n):\n    return n if n < 2 else fib(n-1) + fib(n-2)\n\nadd memoization"], "synthetic": true}
+{"id": "b03", "messages": ["Write a SQL query that returns the top 5 customers by total order value."], "synthetic": true}
+{"id": "b04", "messages": ["# Project Atlas\n\nAtlas is a small CLI that syncs a folder to object storage.\n\n## Install\n\npip install atlas-sync\n\n## Usage\n\natlas sync ./photos s3://bucket/photos\n\nsummarize this README"], "synthetic": true}
+{"id": "b05", "messages": ["Why does `git rebase -i HEAD~3` open an editor and how do I abort?"], "synthetic": true}
+{"id": "b06", "messages": ["Review this function for off-by-one errors:\nfor i in range(len(items) + 1):\n    print(items[i])"], "synthetic": true}
+{"id": "b07", "messages": ["Convert this JSON to YAML: {\"name\": \"demo\", \"replicas\": 3, \"ports\": [80, 443]}"], "synthetic": true}
+{"id": "b08", "messages": ["What are common symptoms of type 2 diabetes?"], "synthetic": true}
+{"id": "b09", "messages": ["Explain how chemotherapy works in general terms for a biology class."], "synthetic": true}
+{"id": "b10", "messages": ["Write a SQL schema for a clinic with tables for appointments, rooms and staff."], "synthetic": true}
+{"id": "b11", "messages": ["Summarize the history of HIV research in three bullet points."], "synthetic": true}
+{"id": "b12", "messages": ["Dr. Smith's review paper on cancer immunotherapy is long; give me a reading plan."], "synthetic": true}
+{"id": "b13", "messages": ["The scikit-learn pipeline fails with ValueError: found input with 0 samples. Why?"], "synthetic": true}
+{"id": "b14", "messages": ["Compare task-based scheduling with disk-based caching strategy implementations for a build system."], "synthetic": true}
+{"id": "b15", "messages": ["What does the error 'ECONNRESET' mean in Node.js?"], "synthetic": true}
+{"id": "b16", "messages": ["Generate a UUID v4 example and explain the version bits: 3f2b8c1e-7a4d-4e9b-9c3a-1d2e3f4a5b6c"], "synthetic": true}
+{"id": "b17", "messages": ["Why is sha1 e3b0c44298fc1c149afbf4c8996fb92427ae4 not safe for signatures?"], "synthetic": true}
+{"id": "b18", "messages": ["Rename the variable thisIsAVeryLongCamelCaseIdentifierNameForTesting to something shorter."], "synthetic": true}
+{"id": "b19", "messages": ["Translate to French: The meeting is moved to Thursday at ten."], "synthetic": true}
+{"id": "b20", "messages": ["Write a bash loop that renames *.jpeg to *.jpg."], "synthetic": true}
+{"id": "b21", "messages": ["Draft an email to the team announcing the Friday release freeze."], "synthetic": true}
+{"id": "b22", "messages": ["Explain the difference between OAuth 2.0 and OpenID Connect."], "synthetic": true}
+{"id": "b23", "messages": ["What is a good regex for matching ISO 8601 dates?"], "synthetic": true}
+{"id": "b24", "messages": ["Refactor this class to use dependency injection:\nclass Mailer:\n    def __init__(self):\n        self.client = SmtpClient('smtp.example.com', 587)"], "synthetic": true}
+{"id": "b25", "messages": ["My build says 'sk' is not defined at line 20 of app.js, what does that mean?"], "synthetic": true}
+{"id": "b26", "messages": ["Explain what a private key is in public-key cryptography, without any example key."], "synthetic": true}
+{"id": "b27", "messages": ["How should I store API keys in a deployment? Compare a vault and environment variables."], "synthetic": true}
+{"id": "b28", "messages": ["Write a pytest fixture that creates a temp directory with two files."], "synthetic": true}
+{"id": "b29", "messages": ["Version 2.1.3 changed the default timeout from 30 to 60 seconds. Write release notes."], "synthetic": true}
+{"id": "b30", "messages": ["The invoice number is INV-2026-0042 and the total is 1,250.00. Format it as a table."], "synthetic": true}
+{"id": "b31", "messages": ["Phone numbers in this table are placeholders like 000-000-0000; write a validator that rejects them."], "synthetic": true}
+{"id": "b32", "messages": ["Give me a 5 day itinerary for Lisbon with a focus on food."], "synthetic": true}
+{"id": "b33", "messages": ["Explain Big O notation using a sorting example."], "synthetic": true}
+{"id": "b34", "messages": ["Write a Dockerfile for a Flask app with a non-root user."], "synthetic": true}
+{"id": "b35", "messages": ["What is the capital of Australia and when was it founded?"], "synthetic": true}
+{"id": "b36", "messages": ["Summarize: The quarterly report shows revenue up 4 percent, costs flat, and two new hires in support."], "synthetic": true}
+{"id": "b37", "messages": ["Which is faster for membership checks, a list or a set, and why?"], "synthetic": true}
+{"id": "b38", "messages": ["Write a short poem about debugging at midnight."], "synthetic": true}
+{"id": "b39", "messages": ["Explain how a bloom filter works and when false positives matter."], "synthetic": true}
+{"id": "b40", "messages": ["Turn these bullet points into a short status update: fixed login bug, started on search, blocked on design review."], "synthetic": true}
+{"id": "b41", "messages": ["data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg== why is this image one pixel?"], "synthetic": true}
+{"id": "b42", "messages": ["Tell me the difference between a patient table and a visit table in a database."], "synthetic": true}
+{"id": "x00", "messages": ["Rewrite this footer: Questions? Email help@example.com or call 555-010-0100 weekdays 9 to 5."], "known_overblock": true, "synthetic": true}
+{"id": "x01", "messages": ["Document this table: Patient Visits has columns diagnosis_code and prescribed_drug for the reporting team."], "known_overblock": true, "synthetic": true}
+{"id": "x02", "messages": ["Mr. Rogers asked how insulin works in a school lesson plan; write the lesson plan."], "known_overblock": true, "synthetic": true}
+{"id": "x03", "messages": ["Patient Intake Form template: write the HTML with a diagnosis field and a medication field."], "known_overblock": true, "synthetic": true}

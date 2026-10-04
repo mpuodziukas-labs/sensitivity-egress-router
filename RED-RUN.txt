@@ -1,0 +1,416 @@
+FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF...................... [ 40%]
+...........................F..........................................F. [ 80%]
+F..........F.FFFFFFF.FFFFFFFFFFFFF.                                      [100%]
+=================================== FAILURES ===================================
+E   AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+    assert False
+     +  where False = <function as_expected at 0x10ade5c60>({'bypass': 'secret-key-shape', 'expect': 'local', 'id': 'k-openai', 'messages': ['Fix this config: api_key = [prefix redacted]EXAMPLE0123456789ABCDEF'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+     +    where <function as_expected at 0x10ade5c60> = evaluate.as_expected
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:21: AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E   AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+    assert False
+     +  where False = <function as_expected at 0x10ade5c60>({'bypass': 'secret-key-shape', 'expect': 'local', 'id': 'k-anthropic', 'messages': ['export KEY=[prefix redacted]EXAMPLE-0123456789abcdef'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+     +    where <function as_expected at 0x10ade5c60> = evaluate.as_expected
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:21: AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E   AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+    assert False
+     +  where False = <function as_expected at 0x10ade5c60>({'bypass': 'secret-key-shape', 'expect': 'local', 'id': 'k-ghp', 'messages': ['git remote set-url origin https://[prefix redacted]EXAMPLE0123456789ABCDEF@host/x.git'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+     +    where <function as_expected at 0x10ade5c60> = evaluate.as_expected
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:21: AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E   AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+    assert False
+     +  where False = <function as_expected at 0x10ade5c60>({'bypass': 'secret-key-shape', 'expect': 'local', 'id': 'k-pat', 'messages': ['token: [prefix redacted]EXAMPLE0123456789abcdef'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+     +    where <function as_expected at 0x10ade5c60> = evaluate.as_expected
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:21: AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E   AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+    assert False
+     +  where False = <function as_expected at 0x10ade5c60>({'bypass': 'secret-key-shape', 'expect': 'local', 'id': 'k-aws', 'messages': ['aws_access_key_id = [prefix redacted]EXAMPLEEXAMPLE12'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+     +    where <function as_expected at 0x10ade5c60> = evaluate.as_expected
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:21: AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E   AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+    assert False
+     +  where False = <function as_expected at 0x10ade5c60>({'bypass': 'secret-key-shape', 'expect': 'local', 'id': 'k-google', 'messages': ['key={AIZA}SyEXAMPLE0123456789abcdefghijklmnop'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+     +    where <function as_expected at 0x10ade5c60> = evaluate.as_expected
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:21: AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E   AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+    assert False
+     +  where False = <function as_expected at 0x10ade5c60>({'bypass': 'secret-key-shape', 'expect': 'local', 'id': 'k-slack', 'messages': ['SLACK=xox[redacted]-EXAMPLE-0123456789'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+     +    where <function as_expected at 0x10ade5c60> = evaluate.as_expected
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:21: AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E   AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+    assert False
+     +  where False = <function as_expected at 0x10ade5c60>({'bypass': 'private-key', 'expect': 'local', 'id': 'pk-block', 'messages': ['why does this fail?\n-----BEGIN [header redacted]-----\nMIIEXAMPLEEXAMPLE\n'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+     +    where <function as_expected at 0x10ade5c60> = evaluate.as_expected
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:21: AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E   AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+    assert False
+     +  where False = <function as_expected at 0x10ade5c60>({'bypass': 'private-key', 'expect': 'local', 'id': 'pk-ec', 'messages': ['-----BEGIN [header redacted]-----'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+     +    where <function as_expected at 0x10ade5c60> = evaluate.as_expected
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:21: AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E   AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+    assert False
+     +  where False = <function as_expected at 0x10ade5c60>({'bypass': 'pii-ssn', 'expect': 'local', 'id': 'ssn-1', 'messages': ['Fill the form for SSN 123-45-6789 please'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+     +    where <function as_expected at 0x10ade5c60> = evaluate.as_expected
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:21: AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E   AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+    assert False
+     +  where False = <function as_expected at 0x10ade5c60>({'bypass': 'pii-ssn', 'expect': 'local', 'id': 'ssn-2', 'messages': ['employee 234-56-7890, start date next week'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+     +    where <function as_expected at 0x10ade5c60> = evaluate.as_expected
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:21: AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E   AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+    assert False
+     +  where False = <function as_expected at 0x10ade5c60>({'bypass': 'pii-email-phone', 'expect': 'local', 'id': 'ep-1', 'messages': ['Reply to Jane Example at jane.example@example.com or (555) 010-0199'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+     +    where <function as_expected at 0x10ade5c60> = evaluate.as_expected
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:21: AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E   AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+    assert False
+     +  where False = <function as_expected at 0x10ade5c60>({'bypass': 'pii-email-phone', 'expect': 'local', 'id': 'ep-2', 'messages': ['resume: Sam Sample, sam.sample@example.org, 555-010-0123, 5 years of Python'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+     +    where <function as_expected at 0x10ade5c60> = evaluate.as_expected
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:21: AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E   AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+    assert False
+     +  where False = <function as_expected at 0x10ade5c60>({'bypass': 'pii-dob', 'expect': 'local', 'id': 'dob-1', 'messages': ['Applicant DOB: 04/12/1980, check eligibility'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+     +    where <function as_expected at 0x10ade5c60> = evaluate.as_expected
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:21: AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E   AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+    assert False
+     +  where False = <function as_expected at 0x10ade5c60>({'bypass': 'pii-dob', 'expect': 'local', 'id': 'dob-2', 'messages': ['She gave her date of birth as March 3, 1975'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+     +    where <function as_expected at 0x10ade5c60> = evaluate.as_expected
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:21: AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E   AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+    assert False
+     +  where False = <function as_expected at 0x10ade5c60>({'bypass': 'pii-dob', 'expect': 'local', 'id': 'dob-3', 'messages': ['born on 1980-04-12 in a small town'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+     +    where <function as_expected at 0x10ade5c60> = evaluate.as_expected
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:21: AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E   AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+    assert False
+     +  where False = <function as_expected at 0x10ade5c60>({'bypass': 'health-person', 'expect': 'local', 'id': 'h-patient', 'messages': ['Patient Jane Example, MRN 0012345, diagnosed with type 2 diabetes'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+     +    where <function as_expected at 0x10ade5c60> = evaluate.as_expected
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:21: AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E   AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+    assert False
+     +  where False = <function as_expected at 0x10ade5c60>({'bypass': 'health-person', 'expect': 'local', 'id': 'h-mr', 'messages': ['Mr. Example was prescribed metformin after the lab results came back'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+     +    where <function as_expected at 0x10ade5c60> = evaluate.as_expected
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:21: AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E   AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+    assert False
+     +  where False = <function as_expected at 0x10ade5c60>({'bypass': 'health-person', 'expect': 'local', 'id': 'h-first', 'messages': ['I was diagnosed with ADHD last year, help me plan my medication schedule'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+     +    where <function as_expected at 0x10ade5c60> = evaluate.as_expected
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:21: AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E   AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+    assert False
+     +  where False = <function as_expected at 0x10ade5c60>({'bypass': 'health-person', 'expect': 'local', 'id': 'h-family', 'messages': ['my mother has stage 3 cancer, summarize her chemotherapy options'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+     +    where <function as_expected at 0x10ade5c60> = evaluate.as_expected
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:21: AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E   AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+    assert False
+     +  where False = <function as_expected at 0x10ade5c60>({'bypass': 'split-window', 'expect': 'local', 'id': 'split-key-2', 'messages': ['my key is [prefix redacted]EXAMPLE012345', '6789ABCDEFGH thanks'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+     +    where <function as_expected at 0x10ade5c60> = evaluate.as_expected
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:21: AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E   AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+    assert False
+     +  where False = <function as_expected at 0x10ade5c60>({'bypass': 'split-window', 'expect': 'local', 'id': 'split-key-3', 'messages': ['token [prefix redacted]EXAMPLE0', '123456789', 'ABCDEF end'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+     +    where <function as_expected at 0x10ade5c60> = evaluate.as_expected
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:21: AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E   AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+    assert False
+     +  where False = <function as_expected at 0x10ade5c60>({'bypass': 'split-window', 'expect': 'local', 'id': 'split-ssn', 'messages': ['ssn is 123-45-', '6789'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+     +    where <function as_expected at 0x10ade5c60> = evaluate.as_expected
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:21: AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E   AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+    assert False
+     +  where False = <function as_expected at 0x10ade5c60>({'bypass': 'split-window', 'expect': 'local', 'id': 'split-pk', 'messages': ['paste: -----BEGIN RSA ', 'PRIVATE KEY-----'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+     +    where <function as_expected at 0x10ade5c60> = evaluate.as_expected
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:21: AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E   AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+    assert False
+     +  where False = <function as_expected at 0x10ade5c60>({'bypass': 'split-window', 'expect': 'local', 'id': 'split-late-turn', 'messages': ['key [prefix redacted]EXAMPLE0123456789ABCDEF', 'ok', 'now unrelated', 'what is a mutex?'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+     +    where <function as_expected at 0x10ade5c60> = evaluate.as_expected
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:21: AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E   AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+    assert False
+     +  where False = <function as_expected at 0x10ade5c60>({'bypass': 'obfuscated', 'expect': 'local', 'id': 'obf-spaced', 'messages': ['{SKSP}E X A M P L E 0 1 2 3 4 5 6 7 8 9 A B C D'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+     +    where <function as_expected at 0x10ade5c60> = evaluate.as_expected
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:21: AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E   AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+    assert False
+     +  where False = <function as_expected at 0x10ade5c60>({'bypass': 'obfuscated', 'expect': 'local', 'id': 'obf-dotted', 'messages': ['{SKDOT}E.X.A.M.P.L.E.0.1.2.3.4.5.6.7.8.9.A.B.C.D'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+     +    where <function as_expected at 0x10ade5c60> = evaluate.as_expected
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:21: AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E   AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+    assert False
+     +  where False = <function as_expected at 0x10ade5c60>({'bypass': 'obfuscated', 'expect': 'local', 'id': 'obf-zero-width', 'messages': ['[prefix redacted]\u200bEXAMPLE0123456789ABCDEF'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+     +    where <function as_expected at 0x10ade5c60> = evaluate.as_expected
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:21: AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E   AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+    assert False
+     +  where False = <function as_expected at 0x10ade5c60>({'bypass': 'obfuscated', 'expect': 'local', 'id': 'obf-ssn', 'messages': ['1 2 3 - 4 5 - 6 7 8 9'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+     +    where <function as_expected at 0x10ade5c60> = evaluate.as_expected
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:21: AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E   AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+    assert False
+     +  where False = <function as_expected at 0x10ade5c60>({'bypass': 'obfuscated', 'expect': 'local', 'id': 'obf-ghp', 'messages': ['{GHPSP}E X A M P L E 0 1 2 3 4 5 6 7 8 9 A B'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+     +    where <function as_expected at 0x10ade5c60> = evaluate.as_expected
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:21: AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E   AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+    assert False
+     +  where False = <function as_expected at 0x10ade5c60>({'bypass': 'base64', 'expect': 'local', 'id': 'b64-key', 'messages': ['decode and fix: YXBpX2tleT1zay1FWEFNUExFMDEyMzQ1Njc4OUFCQ0RFRg=='], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+     +    where <function as_expected at 0x10ade5c60> = evaluate.as_expected
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:21: AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E   AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+    assert False
+     +  where False = <function as_expected at 0x10ade5c60>({'bypass': 'base64', 'expect': 'local', 'id': 'b64-ssn', 'messages': ['c3NuIDEyMy00NS02Nzg5IGZvciB0aGUgZm9ybQ=='], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+     +    where <function as_expected at 0x10ade5c60> = evaluate.as_expected
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:21: AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E   AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+    assert False
+     +  where False = <function as_expected at 0x10ade5c60>({'bypass': 'base64', 'expect': 'local', 'id': 'b64-ghp', 'messages': ['dG9rZW4gZ2hwX0VYQU1QTEUwMTIzNDU2Nzg5QUJDREVG'], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+     +    where <function as_expected at 0x10ade5c60> = evaluate.as_expected
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:21: AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E   AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+    assert False
+     +  where False = <function as_expected at 0x10ade5c60>({'bypass': 'base64', 'expect': 'local', 'id': 'b64-split', 'messages': ['YXBpX2tleT1zay1FWEFNUExF', 'MDEyMzQ1Njc4OUFCQ0RFRg=='], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+     +    where <function as_expected at 0x10ade5c60> = evaluate.as_expected
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:21: AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E   AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+    assert False
+     +  where False = <function as_expected at 0x10ade5c60>({'bypass': 'fail-closed', 'classifier': 'raise', 'expect': 'local', 'id': 'fc-raise', ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+     +    where <function as_expected at 0x10ade5c60> = evaluate.as_expected
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:21: AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E   AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+    assert False
+     +  where False = <function as_expected at 0x10ade5c60>({'bypass': 'fail-closed', 'classifier': 'timeout', 'expect': 'local', 'id': 'fc-timeout', ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+     +    where <function as_expected at 0x10ade5c60> = evaluate.as_expected
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:21: AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E   AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+    assert False
+     +  where False = <function as_expected at 0x10ade5c60>({'bypass': 'fail-closed', 'classifier': 'empty', 'expect': 'local', 'id': 'fc-empty', ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+     +    where <function as_expected at 0x10ade5c60> = evaluate.as_expected
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:21: AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E   AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+    assert False
+     +  where False = <function as_expected at 0x10ade5c60>({'bypass': 'fail-closed', 'classifier': 'none', 'expect': 'local', 'id': 'fc-none', ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+     +    where <function as_expected at 0x10ade5c60> = evaluate.as_expected
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:21: AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E   AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+    assert False
+     +  where False = <function as_expected at 0x10ade5c60>({'bypass': 'fail-closed', 'classifier': 'unknown', 'expect': 'local', 'id': 'fc-unknown', ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+     +    where <function as_expected at 0x10ade5c60> = evaluate.as_expected
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:21: AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E   AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+    assert False
+     +  where False = <function as_expected at 0x10ade5c60>({'bypass': 'fail-closed', 'expect': 'local', 'id': 'fc-empty-list', 'messages': [], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+     +    where <function as_expected at 0x10ade5c60> = evaluate.as_expected
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:21: AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E   AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+    assert False
+     +  where False = <function as_expected at 0x10ade5c60>({'bypass': 'fail-closed', 'expect': 'local', 'id': 'fc-empty-string', 'messages': [''], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+     +    where <function as_expected at 0x10ade5c60> = evaluate.as_expected
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:21: AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E   AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+    assert False
+     +  where False = <function as_expected at 0x10ade5c60>({'bypass': 'fail-closed', 'expect': 'local', 'id': 'fc-blank-string', 'messages': ['   '], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+     +    where <function as_expected at 0x10ade5c60> = evaluate.as_expected
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:21: AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E   AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+    assert False
+     +  where False = <function as_expected at 0x10ade5c60>({'bypass': 'fail-closed', 'expect': 'local', 'id': 'fc-not-a-list', 'messages': 'plain string', ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+     +    where <function as_expected at 0x10ade5c60> = evaluate.as_expected
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:21: AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E   AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+    assert False
+     +  where False = <function as_expected at 0x10ade5c60>({'bypass': 'fail-closed', 'expect': 'local', 'id': 'fc-non-str-item', 'messages': [1], ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+     +    where <function as_expected at 0x10ade5c60> = evaluate.as_expected
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:21: AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E   AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+    assert False
+     +  where False = <function as_expected at 0x10ade5c60>({'bypass': 'fail-closed', 'expect': 'local', 'id': 'fc-null', 'messages': None, ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+     +    where <function as_expected at 0x10ade5c60> = evaluate.as_expected
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:21: AssertionError: ('local', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E   AssertionError: ('refuse', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+    assert False
+     +  where False = <function as_expected at 0x10ade5c60>({'bypass': 'local-down-refuse', 'expect': 'refuse', 'id': 'ld-secret', 'local_up': False, ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+     +    where <function as_expected at 0x10ade5c60> = evaluate.as_expected
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:21: AssertionError: ('refuse', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E   AssertionError: ('refuse', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+    assert False
+     +  where False = <function as_expected at 0x10ade5c60>({'bypass': 'local-down-refuse', 'expect': 'refuse', 'id': 'ld-pii', 'local_up': False, ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+     +    where <function as_expected at 0x10ade5c60> = evaluate.as_expected
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:21: AssertionError: ('refuse', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E   AssertionError: ('refuse', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+    assert False
+     +  where False = <function as_expected at 0x10ade5c60>({'bypass': 'local-down-refuse', 'expect': 'refuse', 'id': 'ld-health', 'local_up': False, ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+     +    where <function as_expected at 0x10ade5c60> = evaluate.as_expected
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:21: AssertionError: ('refuse', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E   AssertionError: ('refuse', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+    assert False
+     +  where False = <function as_expected at 0x10ade5c60>({'bypass': 'local-down-refuse', 'classifier': 'raise', 'expect': 'refuse', 'id': 'ld-unclassified', ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+     +    where <function as_expected at 0x10ade5c60> = evaluate.as_expected
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:21: AssertionError: ('refuse', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E   AssertionError: ('refuse', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+    assert False
+     +  where False = <function as_expected at 0x10ade5c60>({'bypass': 'local-down-refuse', 'expect': 'refuse', 'id': 'ld-b64', 'local_up': False, ...}, {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+     +    where <function as_expected at 0x10ade5c60> = evaluate.as_expected
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:21: AssertionError: ('refuse', {'class': 'clean', 'destination': 'cloud', 'exit': 0, 'rule': 'clean'})
+E   AssertionError: assert ('cloud' == 'refused'
+      
+      - refused
+      + cloud)
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:35: AssertionError: assert ('cloud' == 'refused'
+E   assert not True
+     +  where True = any(<generator object test_log_line_holds_class_destination_rule_only.<locals>.<genexpr> at 0x10ae096c0>)
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:43: assert not True
+E   TypeError: 'NoneType' object is not iterable
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:43: TypeError: 'NoneType' object is not iterable
+E   AssertionError: assert 'cloud' == 'local'
+      
+      - local
+      + cloud
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:50: AssertionError: assert 'cloud' == 'local'
+E   assert (0 == 3)
+     +  where 0 = CompletedProcess(args=['/opt/homebrew/opt/python@3.11/bin/python3.11', '~/proof-artifacts/sensi....py', '--local-down'], returncode=0, stdout='{"class": "clean", "destination": "cloud", "rule": "clean"}\n', stderr='').returncode
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:68: assert (0 == 3)
+E   json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+/opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/decoder.py:355: json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+E   json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+/opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/decoder.py:355: json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+E   AssertionError: assert 'cloud' == 'local'
+      
+      - local
+      + cloud
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:73: AssertionError: assert 'cloud' == 'local'
+E   AssertionError: assert 'cloud' == 'local'
+      
+      - local
+      + cloud
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:73: AssertionError: assert 'cloud' == 'local'
+E   AssertionError: assert 'cloud' == 'local'
+      
+      - local
+      + cloud
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:73: AssertionError: assert 'cloud' == 'local'
+E   AssertionError: README results drifted from evaluate.py
+    assert '| rule class | routed as expected |\n|---|---|\n| secret-key-shape | 0/7 |\n| private-key | 0/2 |\n| pii-ssn | 0/2 |\...\n| control (cloud) | 5/5 |\n\nsensitive prompts routed local: 0/45\nbenign prompts routed cloud: 43/43 (over-block 0)' in '# sensitivity-egress-router\n\nA team routes prompts to cheap cloud models; one resume, key or patient note leaks bec...a. Not production, not client data.\n\n## Limitations\n\nSmall synthetic corpus. Replace before drawing conclusions.\n'
+     +  where '| rule class | routed as expected |\n|---|---|\n| secret-key-shape | 0/7 |\n| private-key | 0/2 |\n| pii-ssn | 0/2 |\...\n| control (cloud) | 5/5 |\n\nsensitive prompts routed local: 0/45\nbenign prompts routed cloud: 43/43 (over-block 0)' = <function results at 0x10ade5d00>()
+     +    where <function results at 0x10ade5d00> = evaluate.results
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:79: AssertionError: README results drifted from evaluate.py
+E   AssertionError: assert '| rule class | routed as expected |\n|---|---|\n| secret-key-shape | 0/7 |\n| private-key | 0/2 |\n| pii-ssn | 0/2 |\...\n| control (cloud) | 5/5 |\n\nsensitive prompts routed local: 0/45\nbenign prompts routed cloud: 43/43 (over-block 0)' != '| rule class | routed as expected |\n|---|---|\n| secret-key-shape | 0/7 |\n| private-key | 0/2 |\n| pii-ssn | 0/2 |\...\n| control (cloud) | 5/5 |\n\nsensitive prompts routed local: 0/45\nbenign prompts routed cloud: 43/43 (over-block 0)'
+     +  where '| rule class | routed as expected |\n|---|---|\n| secret-key-shape | 0/7 |\n| private-key | 0/2 |\n| pii-ssn | 0/2 |\...\n| control (cloud) | 5/5 |\n\nsensitive prompts routed local: 0/45\nbenign prompts routed cloud: 43/43 (over-block 0)' = <function results at 0x10ade5d00>()
+     +    where <function results at 0x10ade5d00> = evaluate.results
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:99: AssertionError: assert '| rule class | routed as expected |\n|---|---|\n| secret-key-shape | 0/7 |\n| private-key | 0/2 |\n| pii-ssn | 0/2 |\...\n| control (cloud) | 5/5 |\n\nsensitive prompts routed local: 0/45\nbenign prompts routed cloud: 43/43 (over-block 0)' != '| rule class | routed as expected |\n|---|---|\n| secret-key-shape | 0/7 |\n| private-key | 0/2 |\n| pii-ssn | 0/2 |\...\n| control (cloud) | 5/5 |\n\nsensitive prompts routed local: 0/45\nbenign prompts routed cloud: 43/43 (over-block 0)'
+E   AssertionError: assert '| rule class | routed as expected |\n|---|---|\n| secret-key-shape | 0/7 |\n| private-key | 0/2 |\n| pii-ssn | 0/2 |\...\n| control (cloud) | 5/5 |\n\nsensitive prompts routed local: 0/45\nbenign prompts routed cloud: 43/43 (over-block 0)' != '| rule class | routed as expected |\n|---|---|\n| secret-key-shape | 0/7 |\n| private-key | 0/2 |\n| pii-ssn | 0/2 |\...\n| control (cloud) | 5/5 |\n\nsensitive prompts routed local: 0/45\nbenign prompts routed cloud: 43/43 (over-block 0)'
+     +  where '| rule class | routed as expected |\n|---|---|\n| secret-key-shape | 0/7 |\n| private-key | 0/2 |\n| pii-ssn | 0/2 |\...\n| control (cloud) | 5/5 |\n\nsensitive prompts routed local: 0/45\nbenign prompts routed cloud: 43/43 (over-block 0)' = <function results at 0x10ade5d00>()
+     +    where <function results at 0x10ade5d00> = evaluate.results
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:105: AssertionError: assert '| rule class | routed as expected |\n|---|---|\n| secret-key-shape | 0/7 |\n| private-key | 0/2 |\n| pii-ssn | 0/2 |\...\n| control (cloud) | 5/5 |\n\nsensitive prompts routed local: 0/45\nbenign prompts routed cloud: 43/43 (over-block 0)' != '| rule class | routed as expected |\n|---|---|\n| secret-key-shape | 0/7 |\n| private-key | 0/2 |\n| pii-ssn | 0/2 |\...\n| control (cloud) | 5/5 |\n\nsensitive prompts routed local: 0/45\nbenign prompts routed cloud: 43/43 (over-block 0)'
+E   AssertionError: mutant FAILOVER was not caught
+    assert '| rule class | routed as expected |\n|---|---|\n| secret-key-shape | 0/7 |\n| private-key | 0/2 |\n| pii-ssn | 0/2 |\...\n| control (cloud) | 5/5 |\n\nsensitive prompts routed local: 0/45\nbenign prompts routed cloud: 43/43 (over-block 0)' != '| rule class | routed as expected |\n|---|---|\n| secret-key-shape | 0/7 |\n| private-key | 0/2 |\n| pii-ssn | 0/2 |\...\n| control (cloud) | 5/5 |\n\nsensitive prompts routed local: 0/45\nbenign prompts routed cloud: 43/43 (over-block 0)'
+     +  where '| rule class | routed as expected |\n|---|---|\n| secret-key-shape | 0/7 |\n| private-key | 0/2 |\n| pii-ssn | 0/2 |\...\n| control (cloud) | 5/5 |\n\nsensitive prompts routed local: 0/45\nbenign prompts routed cloud: 43/43 (over-block 0)' = <function results at 0x10ade5d00>()
+     +    where <function results at 0x10ade5d00> = evaluate.results
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:93: AssertionError: mutant FAILOVER was not caught
+E   AssertionError: mutant WINDOW was not caught
+    assert '| rule class | routed as expected |\n|---|---|\n| secret-key-shape | 0/7 |\n| private-key | 0/2 |\n| pii-ssn | 0/2 |\...\n| control (cloud) | 5/5 |\n\nsensitive prompts routed local: 0/45\nbenign prompts routed cloud: 43/43 (over-block 0)' != '| rule class | routed as expected |\n|---|---|\n| secret-key-shape | 0/7 |\n| private-key | 0/2 |\n| pii-ssn | 0/2 |\...\n| control (cloud) | 5/5 |\n\nsensitive prompts routed local: 0/45\nbenign prompts routed cloud: 43/43 (over-block 0)'
+     +  where '| rule class | routed as expected |\n|---|---|\n| secret-key-shape | 0/7 |\n| private-key | 0/2 |\n| pii-ssn | 0/2 |\...\n| control (cloud) | 5/5 |\n\nsensitive prompts routed local: 0/45\nbenign prompts routed cloud: 43/43 (over-block 0)' = <function results at 0x10ade5d00>()
+     +    where <function results at 0x10ade5d00> = evaluate.results
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:93: AssertionError: mutant WINDOW was not caught
+E   AssertionError: mutant scan_spaced was not caught
+    assert '| rule class | routed as expected |\n|---|---|\n| secret-key-shape | 0/7 |\n| private-key | 0/2 |\n| pii-ssn | 0/2 |\...\n| control (cloud) | 5/5 |\n\nsensitive prompts routed local: 0/45\nbenign prompts routed cloud: 43/43 (over-block 0)' != '| rule class | routed as expected |\n|---|---|\n| secret-key-shape | 0/7 |\n| private-key | 0/2 |\n| pii-ssn | 0/2 |\...\n| control (cloud) | 5/5 |\n\nsensitive prompts routed local: 0/45\nbenign prompts routed cloud: 43/43 (over-block 0)'
+     +  where '| rule class | routed as expected |\n|---|---|\n| secret-key-shape | 0/7 |\n| private-key | 0/2 |\n| pii-ssn | 0/2 |\...\n| control (cloud) | 5/5 |\n\nsensitive prompts routed local: 0/45\nbenign prompts routed cloud: 43/43 (over-block 0)' = <function results at 0x10ade5d00>()
+     +    where <function results at 0x10ade5d00> = evaluate.results
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:93: AssertionError: mutant scan_spaced was not caught
+E   AssertionError: mutant decode_b64 was not caught
+    assert '| rule class | routed as expected |\n|---|---|\n| secret-key-shape | 0/7 |\n| private-key | 0/2 |\n| pii-ssn | 0/2 |\...\n| control (cloud) | 5/5 |\n\nsensitive prompts routed local: 0/45\nbenign prompts routed cloud: 43/43 (over-block 0)' != '| rule class | routed as expected |\n|---|---|\n| secret-key-shape | 0/7 |\n| private-key | 0/2 |\n| pii-ssn | 0/2 |\...\n| control (cloud) | 5/5 |\n\nsensitive prompts routed local: 0/45\nbenign prompts routed cloud: 43/43 (over-block 0)'
+     +  where '| rule class | routed as expected |\n|---|---|\n| secret-key-shape | 0/7 |\n| private-key | 0/2 |\n| pii-ssn | 0/2 |\...\n| control (cloud) | 5/5 |\n\nsensitive prompts routed local: 0/45\nbenign prompts routed cloud: 43/43 (over-block 0)' = <function results at 0x10ade5d00>()
+     +    where <function results at 0x10ade5d00> = evaluate.results
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:93: AssertionError: mutant decode_b64 was not caught
+E   AttributeError: <module 'router' from '~/proof-artifacts/sensitivity-egress-router/router.py'> has no attribute 'SECRET_PLAIN'
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:92: AttributeError: <module 'router' from '~/proof-artifacts/sensitivity-egress-router/router.py'> has no attribute 'SECRET_PLAIN'
+E   AttributeError: <module 'router' from '~/proof-artifacts/sensitivity-egress-router/router.py'> has no attribute 'PRIVATE_KEY'
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:92: AttributeError: <module 'router' from '~/proof-artifacts/sensitivity-egress-router/router.py'> has no attribute 'PRIVATE_KEY'
+E   AttributeError: <module 'router' from '~/proof-artifacts/sensitivity-egress-router/router.py'> has no attribute 'SSN'
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:92: AttributeError: <module 'router' from '~/proof-artifacts/sensitivity-egress-router/router.py'> has no attribute 'SSN'
+E   AttributeError: <module 'router' from '~/proof-artifacts/sensitivity-egress-router/router.py'> has no attribute 'PHONE'
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:92: AttributeError: <module 'router' from '~/proof-artifacts/sensitivity-egress-router/router.py'> has no attribute 'PHONE'
+E   AttributeError: <module 'router' from '~/proof-artifacts/sensitivity-egress-router/router.py'> has no attribute 'DOB'
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:92: AttributeError: <module 'router' from '~/proof-artifacts/sensitivity-egress-router/router.py'> has no attribute 'DOB'
+E   AttributeError: <module 'router' from '~/proof-artifacts/sensitivity-egress-router/router.py'> has no attribute 'HEALTH'
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:92: AttributeError: <module 'router' from '~/proof-artifacts/sensitivity-egress-router/router.py'> has no attribute 'HEALTH'
+E   AssertionError: assert '| rule class | routed as expected |\n|---|---|\n| secret-key-shape | 0/7 |\n| private-key | 0/2 |\n| pii-ssn | 0/2 |\...\n| control (cloud) | 5/5 |\n\nsensitive prompts routed local: 0/45\nbenign prompts routed cloud: 43/43 (over-block 0)' != '| rule class | routed as expected |\n|---|---|\n| secret-key-shape | 0/7 |\n| private-key | 0/2 |\n| pii-ssn | 0/2 |\...\n| control (cloud) | 5/5 |\n\nsensitive prompts routed local: 0/45\nbenign prompts routed cloud: 43/43 (over-block 0)'
+     +  where '| rule class | routed as expected |\n|---|---|\n| secret-key-shape | 0/7 |\n| private-key | 0/2 |\n| pii-ssn | 0/2 |\...\n| control (cloud) | 5/5 |\n\nsensitive prompts routed local: 0/45\nbenign prompts routed cloud: 43/43 (over-block 0)' = <function results at 0x10ade5d00>()
+     +    where <function results at 0x10ade5d00> = evaluate.results
+~/proof-artifacts/sensitivity-egress-router/tests/test_proof.py:161: AssertionError: assert '| rule class | routed as expected |\n|---|---|\n| secret-key-shape | 0/7 |\n| private-key | 0/2 |\n| pii-ssn | 0/2 |\...\n| control (cloud) | 5/5 |\n\nsensitive prompts routed local: 0/45\nbenign prompts routed cloud: 43/43 (over-block 0)' != '| rule class | routed as expected |\n|---|---|\n| secret-key-shape | 0/7 |\n| private-key | 0/2 |\n| pii-ssn | 0/2 |\...\n| control (cloud) | 5/5 |\n\nsensitive prompts routed local: 0/45\nbenign prompts routed cloud: 43/43 (over-block 0)'
+=========================== short test summary info ============================
+FAILED tests/test_proof.py::test_planted_case_routes_as_labeled[k-openai] - A...
+FAILED tests/test_proof.py::test_planted_case_routes_as_labeled[k-anthropic]
+FAILED tests/test_proof.py::test_planted_case_routes_as_labeled[k-ghp] - Asse...
+FAILED tests/test_proof.py::test_planted_case_routes_as_labeled[k-pat] - Asse...
+FAILED tests/test_proof.py::test_planted_case_routes_as_labeled[k-aws] - Asse...
+FAILED tests/test_proof.py::test_planted_case_routes_as_labeled[k-google] - A...
+FAILED tests/test_proof.py::test_planted_case_routes_as_labeled[k-slack] - As...
+FAILED tests/test_proof.py::test_planted_case_routes_as_labeled[pk-block] - A...
+FAILED tests/test_proof.py::test_planted_case_routes_as_labeled[pk-ec] - Asse...
+FAILED tests/test_proof.py::test_planted_case_routes_as_labeled[ssn-1] - Asse...
+FAILED tests/test_proof.py::test_planted_case_routes_as_labeled[ssn-2] - Asse...
+FAILED tests/test_proof.py::test_planted_case_routes_as_labeled[ep-1] - Asser...
+FAILED tests/test_proof.py::test_planted_case_routes_as_labeled[ep-2] - Asser...
+FAILED tests/test_proof.py::test_planted_case_routes_as_labeled[dob-1] - Asse...
+FAILED tests/test_proof.py::test_planted_case_routes_as_labeled[dob-2] - Asse...
+FAILED tests/test_proof.py::test_planted_case_routes_as_labeled[dob-3] - Asse...
+FAILED tests/test_proof.py::test_planted_case_routes_as_labeled[h-patient] - ...
+FAILED tests/test_proof.py::test_planted_case_routes_as_labeled[h-mr] - Asser...
+FAILED tests/test_proof.py::test_planted_case_routes_as_labeled[h-first] - As...
+FAILED tests/test_proof.py::test_planted_case_routes_as_labeled[h-family] - A...
+FAILED tests/test_proof.py::test_planted_case_routes_as_labeled[split-key-2]
+FAILED tests/test_proof.py::test_planted_case_routes_as_labeled[split-key-3]
+FAILED tests/test_proof.py::test_planted_case_routes_as_labeled[split-ssn] - ...
+FAILED tests/test_proof.py::test_planted_case_routes_as_labeled[split-pk] - A...
+FAILED tests/test_proof.py::test_planted_case_routes_as_labeled[split-late-turn]
+FAILED tests/test_proof.py::test_planted_case_routes_as_labeled[obf-spaced]
+FAILED tests/test_proof.py::test_planted_case_routes_as_labeled[obf-dotted]
+FAILED tests/test_proof.py::test_planted_case_routes_as_labeled[obf-zero-width]
+FAILED tests/test_proof.py::test_planted_case_routes_as_labeled[obf-ssn] - As...
+FAILED tests/test_proof.py::test_planted_case_routes_as_labeled[obf-ghp] - As...
+FAILED tests/test_proof.py::test_planted_case_routes_as_labeled[b64-key] - As...
+FAILED tests/test_proof.py::test_planted_case_routes_as_labeled[b64-ssn] - As...
+FAILED tests/test_proof.py::test_planted_case_routes_as_labeled[b64-ghp] - As...
+FAILED tests/test_proof.py::test_planted_case_routes_as_labeled[b64-split] - ...
+FAILED tests/test_proof.py::test_planted_case_routes_as_labeled[fc-raise] - A...
+FAILED tests/test_proof.py::test_planted_case_routes_as_labeled[fc-timeout]
+FAILED tests/test_proof.py::test_planted_case_routes_as_labeled[fc-empty] - A...
+FAILED tests/test_proof.py::test_planted_case_routes_as_labeled[fc-none] - As...
+FAILED tests/test_proof.py::test_planted_case_routes_as_labeled[fc-unknown]
+FAILED tests/test_proof.py::test_planted_case_routes_as_labeled[fc-empty-list]
+FAILED tests/test_proof.py::test_planted_case_routes_as_labeled[fc-empty-string]
+FAILED tests/test_proof.py::test_planted_case_routes_as_labeled[fc-blank-string]
+FAILED tests/test_proof.py::test_planted_case_routes_as_labeled[fc-not-a-list]
+FAILED tests/test_proof.py::test_planted_case_routes_as_labeled[fc-non-str-item]
+FAILED tests/test_proof.py::test_planted_case_routes_as_labeled[fc-null] - As...
+FAILED tests/test_proof.py::test_planted_case_routes_as_labeled[ld-secret] - ...
+FAILED tests/test_proof.py::test_planted_case_routes_as_labeled[ld-pii] - Ass...
+FAILED tests/test_proof.py::test_planted_case_routes_as_labeled[ld-health] - ...
+FAILED tests/test_proof.py::test_planted_case_routes_as_labeled[ld-unclassified]
+FAILED tests/test_proof.py::test_planted_case_routes_as_labeled[ld-b64] - Ass...
+FAILED tests/test_proof.py::test_sensitive_with_local_down_is_exit_3_never_cloud
+FAILED tests/test_proof.py::test_log_line_holds_class_destination_rule_only[fc-not-a-list]
+FAILED tests/test_proof.py::test_log_line_holds_class_destination_rule_only[fc-null]
+FAILED tests/test_proof.py::test_cost_decides_only_among_allowed_destinations
+FAILED tests/test_proof.py::test_cli_exit_3_when_local_down_and_sensitive - a...
+FAILED tests/test_proof.py::test_cli_bad_input_is_local_never_cloud[not json]
+FAILED tests/test_proof.py::test_cli_bad_input_is_local_never_cloud[] - json....
+FAILED tests/test_proof.py::test_cli_bad_input_is_local_never_cloud[{}] - Ass...
+FAILED tests/test_proof.py::test_cli_bad_input_is_local_never_cloud[[]] - Ass...
+FAILED tests/test_proof.py::test_cli_bad_input_is_local_never_cloud[[1]] - As...
+FAILED tests/test_proof.py::test_readme_matches_output - AssertionError: READ...
+FAILED tests/test_proof.py::test_mutant_cost_first_ignores_class - AssertionE...
+FAILED tests/test_proof.py::test_mutant_unclassified_goes_cloud - AssertionEr...
+FAILED tests/test_proof.py::test_mutant_failover_to_cloud_when_local_down - A...
+FAILED tests/test_proof.py::test_mutant_only_last_message_scanned - Assertion...
+FAILED tests/test_proof.py::test_mutant_obfuscation_not_scanned - AssertionEr...
+FAILED tests/test_proof.py::test_mutant_base64_not_decoded - AssertionError: ...
+FAILED tests/test_proof.py::test_mutant_key_shapes_removed - AttributeError: ...
+FAILED tests/test_proof.py::test_mutant_private_key_rule_removed - AttributeE...
+FAILED tests/test_proof.py::test_mutant_ssn_rule_removed - AttributeError: <m...
+FAILED tests/test_proof.py::test_mutant_phone_rule_removed - AttributeError: ...
+FAILED tests/test_proof.py::test_mutant_dob_rule_removed - AttributeError: <m...
+FAILED tests/test_proof.py::test_mutant_health_rule_removed - AttributeError:...
+FAILED tests/test_proof.py::test_mutant_classifier_failure_fails_open - Asser...
+74 failed, 105 passed in 0.28s

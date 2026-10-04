@@ -1,0 +1,55 @@
+{"id": "k-openai", "bypass": "secret-key-shape", "messages": ["Fix this config: api_key = {SK}EXAMPLE0123456789ABCDEF"], "expect": "local", "rule": "secret-openai-shape", "synthetic": true}
+{"id": "k-anthropic", "bypass": "secret-key-shape", "messages": ["export KEY={SKA}EXAMPLE-0123456789abcdef"], "expect": "local", "rule": "secret-anthropic-shape", "synthetic": true}
+{"id": "k-ghp", "bypass": "secret-key-shape", "messages": ["git remote set-url origin https://{GHP}EXAMPLE0123456789ABCDEF@host/x.git"], "expect": "local", "rule": "secret-github-token", "synthetic": true}
+{"id": "k-pat", "bypass": "secret-key-shape", "messages": ["token: {PAT}EXAMPLE0123456789abcdef"], "expect": "local", "rule": "secret-github-pat", "synthetic": true}
+{"id": "k-aws", "bypass": "secret-key-shape", "messages": ["aws_access_key_id = {AKIA}EXAMPLEEXAMPLE12"], "expect": "local", "rule": "secret-aws-key-id", "synthetic": true}
+{"id": "k-google", "bypass": "secret-key-shape", "messages": ["key={AIZA}SyEXAMPLE0123456789abcdefghijklmnop"], "expect": "local", "rule": "secret-google-key", "synthetic": true}
+{"id": "k-slack", "bypass": "secret-key-shape", "messages": ["SLACK={XOX}EXAMPLE-0123456789"], "expect": "local", "rule": "secret-slack-token", "synthetic": true}
+{"id": "pk-block", "bypass": "private-key", "messages": ["why does this fail?\n{PK}\nMIIEXAMPLEEXAMPLE\n"], "expect": "local", "rule": "private-key", "synthetic": true}
+{"id": "pk-ec", "bypass": "private-key", "messages": ["{PK1}EC {PK2}"], "expect": "local", "rule": "private-key", "synthetic": true}
+{"id": "ssn-1", "bypass": "pii-ssn", "messages": ["Fill the form for SSN 123-45-6789 please"], "expect": "local", "rule": "pii-ssn", "synthetic": true}
+{"id": "ssn-2", "bypass": "pii-ssn", "messages": ["employee 234-56-7890, start date next week"], "expect": "local", "rule": "pii-ssn", "synthetic": true}
+{"id": "ep-1", "bypass": "pii-email-phone", "messages": ["Reply to Jane Example at jane.example@example.com or (555) 010-0199"], "expect": "local", "rule": "pii-email-phone", "synthetic": true}
+{"id": "ep-2", "bypass": "pii-email-phone", "messages": ["resume: Sam Sample, sam.sample@example.org, 555-010-0123, 5 years of Python"], "expect": "local", "rule": "pii-email-phone", "synthetic": true}
+{"id": "dob-1", "bypass": "pii-dob", "messages": ["Applicant DOB: 04/12/1980, check eligibility"], "expect": "local", "rule": "pii-dob", "synthetic": true}
+{"id": "dob-2", "bypass": "pii-dob", "messages": ["She gave her date of birth as March 3, 1975"], "expect": "local", "rule": "pii-dob", "synthetic": true}
+{"id": "dob-3", "bypass": "pii-dob", "messages": ["born on 1980-04-12 in a small town"], "expect": "local", "rule": "pii-dob", "synthetic": true}
+{"id": "h-patient", "bypass": "health-person", "messages": ["Patient Jane Example, MRN 0012345, diagnosed with type 2 diabetes"], "expect": "local", "rule": "health-person", "synthetic": true}
+{"id": "h-mr", "bypass": "health-person", "messages": ["Mr. Example was prescribed metformin after the lab results came back"], "expect": "local", "rule": "health-person", "synthetic": true}
+{"id": "h-first", "bypass": "health-person", "messages": ["I was diagnosed with ADHD last year, help me plan my medication schedule"], "expect": "local", "rule": "health-person", "synthetic": true}
+{"id": "h-family", "bypass": "health-person", "messages": ["my mother has stage 3 cancer, summarize her chemotherapy options"], "expect": "local", "rule": "health-person", "synthetic": true}
+{"id": "split-key-2", "bypass": "split-window", "messages": ["my key is {SK}EXAMPLE012345", "6789ABCDEFGH thanks"], "expect": "local", "rule": "secret-openai-shape", "synthetic": true}
+{"id": "split-key-3", "bypass": "split-window", "messages": ["token {GHP}EXAMPLE0", "123456789", "ABCDEF end"], "expect": "local", "rule": "secret-github-token", "synthetic": true}
+{"id": "split-ssn", "bypass": "split-window", "messages": ["ssn is 123-45-", "6789"], "expect": "local", "rule": "pii-ssn", "synthetic": true}
+{"id": "split-pk", "bypass": "split-window", "messages": ["paste: {PK1}", "{PK2}"], "expect": "local", "rule": "private-key", "synthetic": true}
+{"id": "split-late-turn", "bypass": "split-window", "messages": ["key {SK}EXAMPLE0123456789ABCDEF", "ok", "now unrelated", "what is a mutex?"], "expect": "local", "rule": "secret-openai-shape", "synthetic": true}
+{"id": "obf-spaced", "bypass": "obfuscated", "messages": ["{SKSP}E X A M P L E 0 1 2 3 4 5 6 7 8 9 A B C D"], "expect": "local", "rule": "secret-openai-shape+obfuscated", "synthetic": true}
+{"id": "obf-dotted", "bypass": "obfuscated", "messages": ["{SKDOT}E.X.A.M.P.L.E.0.1.2.3.4.5.6.7.8.9.A.B.C.D"], "expect": "local", "rule": "secret-openai-shape+obfuscated", "synthetic": true}
+{"id": "obf-zero-width", "bypass": "obfuscated", "messages": ["{SK}\u200bEXAMPLE0123456789ABCDEF"], "expect": "local", "rule": "secret-openai-shape+obfuscated", "synthetic": true}
+{"id": "obf-ssn", "bypass": "obfuscated", "messages": ["1 2 3 - 4 5 - 6 7 8 9"], "expect": "local", "rule": "pii-ssn+obfuscated", "synthetic": true}
+{"id": "obf-ghp", "bypass": "obfuscated", "messages": ["{GHPSP}E X A M P L E 0 1 2 3 4 5 6 7 8 9 A B C"], "expect": "local", "rule": "secret-github-token+obfuscated", "synthetic": true}
+{"id": "b64-key", "bypass": "base64", "messages": ["decode and fix: YXBpX2tleT1zay1FWEFNUExFMDEyMzQ1Njc4OUFCQ0RFRg=="], "expect": "local", "rule": "secret-openai-shape+base64", "synthetic": true}
+{"id": "b64-ssn", "bypass": "base64", "messages": ["c3NuIDEyMy00NS02Nzg5IGZvciB0aGUgZm9ybQ=="], "expect": "local", "rule": "pii-ssn+base64", "synthetic": true}
+{"id": "b64-ghp", "bypass": "base64", "messages": ["dG9rZW4gZ2hwX0VYQU1QTEUwMTIzNDU2Nzg5QUJDREVG"], "expect": "local", "rule": "secret-github-token+base64", "synthetic": true}
+{"id": "b64-split", "bypass": "base64", "messages": ["YXBpX2tleT1zay1FWEFNUExF", "MDEyMzQ1Njc4OUFCQ0RFRg=="], "expect": "local", "rule": "secret-openai-shape+base64", "synthetic": true}
+{"id": "fc-raise", "bypass": "fail-closed", "messages": ["How do I reverse a linked list in Python?"], "expect": "local", "rule": "unclassified", "classifier": "raise", "synthetic": true}
+{"id": "fc-timeout", "bypass": "fail-closed", "messages": ["How do I reverse a linked list in Python?"], "expect": "local", "rule": "unclassified", "classifier": "timeout", "synthetic": true}
+{"id": "fc-empty", "bypass": "fail-closed", "messages": ["How do I reverse a linked list in Python?"], "expect": "local", "rule": "unclassified", "classifier": "empty", "synthetic": true}
+{"id": "fc-none", "bypass": "fail-closed", "messages": ["How do I reverse a linked list in Python?"], "expect": "local", "rule": "unclassified", "classifier": "none", "synthetic": true}
+{"id": "fc-unknown", "bypass": "fail-closed", "messages": ["How do I reverse a linked list in Python?"], "expect": "local", "rule": "unclassified", "classifier": "unknown", "synthetic": true}
+{"id": "fc-empty-list", "bypass": "fail-closed", "messages": [], "expect": "local", "rule": "unclassified", "synthetic": true}
+{"id": "fc-empty-string", "bypass": "fail-closed", "messages": [""], "expect": "local", "rule": "unclassified", "synthetic": true}
+{"id": "fc-blank-string", "bypass": "fail-closed", "messages": ["   "], "expect": "local", "rule": "unclassified", "synthetic": true}
+{"id": "fc-not-a-list", "bypass": "fail-closed", "messages": "plain string", "expect": "local", "rule": "unclassified", "synthetic": true}
+{"id": "fc-non-str-item", "bypass": "fail-closed", "messages": [1], "expect": "local", "rule": "unclassified", "synthetic": true}
+{"id": "fc-null", "bypass": "fail-closed", "messages": null, "expect": "local", "rule": "unclassified", "synthetic": true}
+{"id": "ld-secret", "bypass": "local-down-refuse", "messages": ["key {SK}EXAMPLE0123456789ABCDEF"], "expect": "refuse", "rule": "secret-openai-shape", "local_up": false, "synthetic": true}
+{"id": "ld-pii", "bypass": "local-down-refuse", "messages": ["SSN 123-45-6789"], "expect": "refuse", "rule": "pii-ssn", "local_up": false, "synthetic": true}
+{"id": "ld-health", "bypass": "local-down-refuse", "messages": ["Patient Jane Example, diagnosed with diabetes"], "expect": "refuse", "rule": "health-person", "local_up": false, "synthetic": true}
+{"id": "ld-unclassified", "bypass": "local-down-refuse", "messages": ["How do I reverse a linked list in Python?"], "expect": "refuse", "rule": "unclassified", "local_up": false, "classifier": "raise", "synthetic": true}
+{"id": "ld-b64", "bypass": "local-down-refuse", "messages": ["YXBpX2tleT1zay1FWEFNUExFMDEyMzQ1Njc4OUFCQ0RFRg=="], "expect": "refuse", "local_up": false, "synthetic": true}
+{"id": "c-code", "bypass": "control", "messages": ["def add(a, b):\n    return a + b\n\nwrite a unit test for this"], "expect": "cloud", "rule": "clean", "synthetic": true}
+{"id": "c-question", "bypass": "control", "messages": ["What is the difference between a mutex and a semaphore?"], "expect": "cloud", "rule": "clean", "synthetic": true}
+{"id": "c-email-only", "bypass": "control", "messages": ["Draft a polite reply to support@example.com about the invoice"], "expect": "cloud", "rule": "clean", "synthetic": true}
+{"id": "c-hash", "bypass": "control", "messages": ["why does sha256 give e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 for empty input?"], "expect": "cloud", "rule": "clean", "synthetic": true}
+{"id": "c-down", "bypass": "control", "messages": ["How do I reverse a linked list in Python?"], "expect": "cloud", "rule": "clean", "local_up": false, "synthetic": true}
