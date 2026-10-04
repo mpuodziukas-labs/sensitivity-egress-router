@@ -11,7 +11,7 @@ ALLOWED = {"clean": ("local", "cloud"), "secret": ("local",), "pii": ("local",),
 FAILOVER = False  # sensitive + local down: never fall over to cloud
 WINDOW = None  # None = scan every message that would be sent; N = last N only
 
-SEP = r"[\s.​-‍﻿]*"  # spacing, dots and zero-width characters an attacker inserts
+SEP = r"[\s.\u200b-\u200d\ufeff]*"  # spacing, dots and zero-width characters an attacker inserts
 SECRET_SPECS = [  # (rule, prefix, body character class, minimum body length)
     ("secret-openai-shape", "sk-", "[A-Za-z0-9]", 20),
     ("secret-anthropic-shape", "sk-ant-", "[A-Za-z0-9_-]", 20),
@@ -52,12 +52,12 @@ DOB = re.compile(r"\b(?:dob|d\.o\.b\.|date of birth|born(?: on)?)(?: (?:as|is|wa
                  r"|(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]* \d{1,2},? \d{4})", re.I)
 HEALTH = re.compile(r"\b(?:diagnos\w*|prescri\w*|medications?|cancer|diabet\w*|hiv|depress\w*|adhd|chemotherap\w*|biops\w*"
                     r"|oncolog\w*|hypertension|insulin|lab results?)\b", re.I)
-_CAP = "[A-ZÀ-ÖØ-Þ]"  # capital letter, Latin incl. accented
-_LOW = "[^\\W\\d_A-ZÀ-ÖØ-Þ]"  # any Unicode letter that is not a Latin capital
+_CAP = "[A-Z\u00c0-\u00d6\u00d8-\u00de]"  # capital letter, Latin incl. accented
+_LOW = "[^\\W\\d_A-Z\u00c0-\u00d6\u00d8-\u00de]"  # any Unicode letter that is not a Latin capital
 
 
 def _person(cap, low):
-    tail = "['’-]" + cap + "?" + low + "+"
+    tail = "['\u2019-]" + cap + "?" + low + "+"
     name = cap + "(?:" + low + "+(?:" + tail + ")*|" + tail + ")"  # accented letters and O'Brien-style apostrophes
     return (r"\b(?:Patient|Mr|Mrs|Ms)\.?(?: |%20)" + name + r"\b|\bMRN\b"
             r"|\b[Ii] (?:was|am|have been|got) (?:diagnosed|prescribed|treated)\b"

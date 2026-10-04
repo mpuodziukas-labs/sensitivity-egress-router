@@ -35,17 +35,17 @@ SECRET_ROWS = {
     "R7": "note " + b64(("key " + K).encode("utf-16-le")),
     "R8": "note " + ("key " + K).encode("utf-16-le").hex(),
     "R9": "note " + b64(b"key " + KB + b"\x01" * 6),
-    "R10": "s️k-" + "Ab3Xy9" * 4,
-    "R11": "s͏k-" + "Ab3Xy9" * 4,
+    "R10": "s\ufe0fk-" + "Ab3Xy9" * 4,
+    "R11": "s\u034fk-" + "Ab3Xy9" * 4,
     "R12": "s\x00k\x00-" + "Ab3Xy9" * 4,
     "R13": '{"note":"\\u0073k-' + "Ab3Xy9" * 4 + '"}',
     "R14": '{"a":"sk-Ab3Xy9","b":"' + "Ab3Xy9" * 3 + '"}',
 }
 HEALTH_ROWS = {
-    "R15a": "Mrs. Zoë was diagnosed with cancer",
-    "R15b": "Mr. José has diabetes",
+    "R15a": "Mrs. Zo\u00eb was diagnosed with cancer",
+    "R15b": "Mr. Jos\u00e9 has diabetes",
     "R16": "see Mr.%20Ren%C3%A9 diagnosed with cancer",
-    "R17": "Mr. O’Brien has diabetes",
+    "R17": "Mr. O\u2019Brien has diabetes",
 }
 
 
