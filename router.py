@@ -37,15 +37,34 @@ SECRET_PLAIN = [(r, _plain(p, b, n)) for r, p, b, n in SECRET_SPECS]
 SECRET_SPACED = [(r + "+obfuscated", _spaced(p, b, n)) for r, p, b, n in SECRET_SPECS]
 SSN = re.compile(r"(?<!\d)\d{3}-\d{2}-\d{4}(?!\d)")
 SSN_SPACED = re.compile(r"(?<!\d)\d%s\d%s\d%s-%s\d%s\d%s-%s\d%s\d%s\d%s\d(?!\d)" % ((SEP,) * 10))
-EMAIL = re.compile(r"[\w.+-]+@[\w-]+\.[\w.-]+")
+EMAIL_RX = re.compile(r"[\w.+-]{1,64}@[\w-]+\.[\w.-]+")  # local part bounded: no quadratic scan
+
+
+class _Email:
+    @staticmethod
+    def search(text):
+        return EMAIL_RX.search(text) if "@" in text else None
+
+
+EMAIL = _Email()
 PHONE = re.compile(r"(?<!\d)(?:\+?1[ .-]?)?\(?\d{3}\)?[ .-]\d{3}[ .-]\d{4}(?!\d)")
 DOB = re.compile(r"\b(?:dob|d\.o\.b\.|date of birth|born(?: on)?)(?: (?:as|is|was))?\W{0,3}(?:\d{1,2}[/-]\d{1,2}[/-]\d{2,4}|\d{4}-\d{2}-\d{2}"
                  r"|(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]* \d{1,2},? \d{4})", re.I)
 HEALTH = re.compile(r"\b(?:diagnos\w*|prescri\w*|medications?|cancer|diabet\w*|hiv|depress\w*|adhd|chemotherap\w*|biops\w*"
                     r"|oncolog\w*|hypertension|insulin|lab results?)\b", re.I)
-PERSON = re.compile(r"\b(?:Patient|Mr|Mrs|Ms)\.? [A-Z][a-z]+\b|\bMRN\b"
-                    r"|\b[Ii] (?:was|am|have been|got) (?:diagnosed|prescribed|treated)\b"
-                    r"|\b[Mm]y (?:mother|father|wife|husband|son|daughter|patient|doctor|diagnosis|therapist)\b")
+_CAP = "[A-ZÀ-ÖØ-Þ]"  # capital letter, Latin incl. accented
+_LOW = "[^\\W\\d_A-ZÀ-ÖØ-Þ]"  # any Unicode letter that is not a Latin capital
+
+
+def _person(cap, low):
+    tail = "['’-]" + cap + "?" + low + "+"
+    name = cap + "(?:" + low + "+(?:" + tail + ")*|" + tail + ")"  # accented letters and O'Brien-style apostrophes
+    return (r"\b(?:Patient|Mr|Mrs|Ms)\.?(?: |%20)" + name + r"\b|\bMRN\b"
+            r"|\b[Ii] (?:was|am|have been|got) (?:diagnosed|prescribed|treated)\b"
+            r"|\b[Mm]y (?:mother|father|wife|husband|son|daughter|patient|doctor|diagnosis|therapist)\b")
+
+
+PERSON = re.compile(_person(_CAP, _LOW))
 B64 = re.compile(r"[A-Za-z0-9+/_-]{16,}={0,2}")
 KNOWN_RULES = {r for r, *_ in SECRET_SPECS} | {
     "private-key", "pii-ssn", "pii-email-phone", "pii-dob", "health-person", "clean", "unclassified"}
@@ -77,29 +96,30 @@ def scan_spaced(text):
     return None
 
 
-def decode_b64(text):
-    for m in B64.findall(text):
-        try:
-            raw = base64.b64decode(m.replace("-", "+").replace("_", "/") + "=" * (-len(m) % 4))
-            s = raw.decode("utf-8")
-        except ValueError:
-            continue
-        if _printable(s):
-            yield s
-
-
 # ---- v2 decode: canonical and decoded views, every one scanned ----
 MAX_RUN = 4096  # an encoded run longer than this is not decoded: unclassified, so local
 HEX_RUN = re.compile(r"[0-9A-Fa-f]{16,}")
 URL_ESC = re.compile(r"%[0-9A-Fa-f]{2}")
 _CI = lambda rx: re.compile(rx.pattern, rx.flags | re.I)
 SECRET_FOLD = [(r, _CI(rx)) for r, rx in SECRET_PLAIN] + [(r, _CI(rx)) for r, rx in SECRET_SPACED]
-PRIVATE_KEY_FOLD, PERSON_FOLD = _CI(PRIVATE_KEY), _CI(PERSON)
+PRIVATE_KEY_FOLD, PERSON_FOLD = _CI(PRIVATE_KEY), re.compile(_person(_CAP, "[^\\W\\d_]"), re.I)
+
+
+_CTRL = re.compile(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]")
+
+
+def _invisible(c):
+    o = ord(c)
+    cat = unicodedata.category(c)
+    return (cat == "Cf" or (cat == "Cc" and c not in "\t\n\r") or o == 0x034F
+            or 0xFE00 <= o <= 0xFE0F or 0xE0100 <= o <= 0xE01EF)  # format, control, grapheme joiner, variation selectors
 
 
 def strip_invisible(text):
-    """Drop every format character (zero-width, bidi controls, soft hyphen, word joiner)."""
-    return "".join(c for c in text if unicodedata.category(c) != "Cf")
+    """Drop format characters, control characters (not tab or newlines), U+034F and variation selectors."""
+    if text.isascii() and not _CTRL.search(text):
+        return text  # fast path: plain ASCII with no control character
+    return "".join(c for c in text if not _invisible(c))
 
 
 def nfkc(text):
@@ -123,22 +143,81 @@ def _printable(s):
     return bool(s) and sum(c.isprintable() or c in "\n\r\t" or unicodedata.category(c) == "Cf" for c in s) / len(s) >= 0.9
 
 
+def _text_views(raw):
+    """Every decoded view of raw bytes is scanned: utf-8 with bad bytes replaced, plus utf-16 either way round."""
+    yield raw.decode("utf-8", errors="replace")
+    for body in (raw, raw[1:]):
+        for enc in ("utf-16-le", "utf-16-be"):
+            yield body[: len(body) // 2 * 2].decode(enc, errors="replace")
+
+
+def _joined(rx_run, rx_join):
+    def runs(text):
+        yield from rx_run.findall(text)
+        for m in rx_join.finditer(text):
+            yield re.sub(r"\s+", "", m.group(0))
+    return runs
+
+
+B64_JOIN = re.compile(r"(?<![A-Za-z0-9+/_=-])[A-Za-z0-9+/_-]{8,}={0,2}(?:[ \t]*\r?\n[ \t]*[A-Za-z0-9+/_-]{4,}={0,2})+")
+HEX_JOIN = re.compile(r"(?<![0-9A-Za-z])[0-9A-Fa-f]{8,}(?:[ \t]*\r?\n[ \t]*[0-9A-Fa-f]{2,})+")
+_b64_runs = _joined(B64, B64_JOIN)
+_hex_runs = _joined(HEX_RUN, HEX_JOIN)
+
+
 def decode_hex(text):
-    for m in HEX_RUN.findall(text):
-        for run in (m, m[1:]):  # a hex letter glued to the front shifts the byte alignment
+    for m in _hex_runs(text):
+        for off in range(4):  # a glued prefix shifts the byte alignment
+            run = m[off:]
             try:
-                s = bytes.fromhex(run[: len(run) // 2 * 2]).decode("utf-8")
+                raw = bytes.fromhex(run[: len(run) // 2 * 2])
             except ValueError:
                 continue
-            if _printable(s):
-                yield s
+            yield from _text_views(raw)
+
+
+def decode_b64(text):
+    for m in _b64_runs(text):
+        for off in range(4):  # a glued prefix shifts the 4-char alignment
+            run = m[off:].rstrip("=").replace("-", "+").replace("_", "/")
+            try:
+                raw = base64.b64decode(run + "=" * (-len(run) % 4))
+            except ValueError:
+                continue
+            yield from _text_views(raw)
 
 
 def decode_url(text):
     if URL_ESC.search(text):
         s = unquote(text, errors="replace")
-        if s != text and _printable(s):
+        if s != text:
             yield s
+
+
+JSON_U = re.compile(r"\\u([0-9a-fA-F]{4})")
+
+
+def decode_json(text):
+    """Views of JSON text: unicode escapes resolved, and every string value joined (a key split over fields)."""
+    if "\\u" in text:
+        yield JSON_U.sub(lambda m: chr(int(m.group(1), 16)), text)
+    if text.lstrip()[:1] in ("{", "["):
+        try:
+            doc = json.loads(text)
+        except ValueError:
+            return
+        out, stack = [], [doc]
+        while stack:
+            v = stack.pop()
+            if isinstance(v, str):
+                out.append(v)
+            elif isinstance(v, dict):
+                stack.extend(reversed(list(v.values())))
+            elif isinstance(v, list):
+                stack.extend(reversed(v))
+        if out:
+            yield "".join(out)
+            yield "\n".join(out)
 
 
 def scan_folded(text):
@@ -159,7 +238,7 @@ def scan_views(text):
 
 
 def decoded_views(text):
-    for tag, gen in (("hex", decode_hex), ("url", decode_url), ("base64", decode_b64)):
+    for tag, gen in (("hex", decode_hex), ("url", decode_url), ("base64", decode_b64), ("json", decode_json)):
         for s in gen(text):
             yield tag, s
 
@@ -190,6 +269,8 @@ def classify(messages):
             if hit:
                 return hit
     for text in texts:
+        if overlong(text):
+            break  # too long to decode: classify_v2 routes it unclassified
         for decoded in decode_b64(text):
             hit = scan_plain(decoded)
             if hit:

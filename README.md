@@ -74,7 +74,7 @@ A Monte Carlo fuzz of v1 (guard-fuzz-montecarlo, seed mcfuzz-v1-20261004) found 
 
 Rule ids from v2 views carry a suffix: `+canon`, `+hex`, `+url` or `+base64`.
 
-Tests: `cases_v2.jsonl` holds 36 synthetic fixtures in eight classes (invisible, nfkc, case, hex, base64, url, overlong, and a control class that must stay cloud). They were written first. The failing run is in RED-RUN-V2.txt (35 failed, 13 passed of 48, against v1; that run had 37 fixtures, and one that v1 already routed correctly was dropped afterwards). `tests/test_v2.py` also holds 7 mutants, one per step: invisible strip, NFKC, case-insensitive scan, hex decode, URL decode, canonicalizing decoded strings, and the long-run fail-closed rule. Each turns the v2 table. All 184 existing tests pass unchanged (no existing test file is edited). `bash run.sh` prints 231 passed.
+Tests: `cases_v2.jsonl` holds 36 synthetic fixtures in eight classes (invisible, nfkc, case, hex, base64, url, overlong, and a control class that must stay cloud). They were written first. The failing run is in RED-RUN-V2.txt (35 failed, 13 passed of 48, against v1; that run had 37 fixtures, and one that v1 already routed correctly was dropped afterwards). `tests/test_v2.py` also holds 7 mutants, one per step: invisible strip, NFKC, case-insensitive scan, hex decode, URL decode, canonicalizing decoded strings, and the long-run fail-closed rule. Each turns the v2 table. All 184 existing tests pass unchanged (no existing test file is edited). `bash run.sh` printed 231 passed at v2.
 
 Measured, with the numbers as printed:
 
@@ -89,6 +89,26 @@ Measured, with the numbers as printed:
 | blind eval, egress router rows only (46 attacks, 47 benign) | recall 0.39 [0.26, 0.54], 28 missed, precision 1.00 | recall 0.43 [0.30, 0.58], 26 missed, precision 1.00 |
 
 The fuzz seed was written down before the run. It is an in-distribution check: the fuzz operators informed the fix, so the drop from 0.518 to 0.321 is not evidence about attacks nobody listed. The blind eval was not read or tuned against. Its two intervals overlap, so the gain from 28 to 26 missed is within noise. I did not run the old seed on v2.
+
+## Hostile review 2026-10-04
+
+An adversarial review of v2 (RED-RUN-REVIEW.txt, rows R1 to R18) found 18 defects. 18 of 18 fixed, each with a test in `tests/test_hostile.py` that failed first (20 failed, 1 passed before the fix) and passes now (260 passed in the full suite). Root cause of R1 to R9: a decoded view was dropped (a decode error or the 90% text gate) instead of scanned. Every decoded view is now scanned, with bad bytes replaced, and the gate is gone.
+
+- R1, R2: one invalid UTF-8 byte no longer voids a base64 or hex view (decode with replace).
+- R3: hex tries byte offsets 0 to 3, so a glued prefix cannot shift the key out of view.
+- R4: base64 tries offsets 0 to 3, so a word glued to the front cannot shift the 4-character alignment.
+- R5, R6: base64 and hex runs wrapped over lines are joined before decoding.
+- R7, R8: base64 and hex bytes are also read as UTF-16 (both byte orders, both alignments).
+- R9: control-byte padding no longer lowers a view under a text gate; there is no gate.
+- R10, R11: variation selectors and U+034F are stripped in canonicalization.
+- R12: control characters other than tab and newlines are stripped in canonicalization.
+- R13: a JSON `\uXXXX` escape view is scanned.
+- R14: a view of all JSON string values joined catches a key split over fields.
+- R15, R16: PERSON matches Unicode letters (Zoe with a diaeresis, Jose, Rene, also percent-encoded).
+- R17: PERSON allows apostrophes and hyphens inside a name (O'Brien).
+- R18: the email pattern is bounded and runs only when the text holds an `@`; a 64k-character input takes under 1 second (test_R18_email_regex_bounded, was 3.3s at 16k and a hang at 160k).
+
+Mutants: 6 new mutants in `tests/test_hostile.py` (json, base64, hex, utf-16 views, invisible strip, ASCII-only person) are each caught, 6 of 6. Measured: the evaluate.py table and the benign over-block are unchanged (45/45 sensitive local, 43/47 benign cloud, same four known rows). The repo has no fuzz or blind-eval script, so I did not re-measure the bypass rate; the 0.321 fuzz figure above is v2 before this review. A dense 64k input made only of long encoded runs takes about 2 seconds, because every run is decoded at four offsets and several encodings. Still not handled: everything in the v2 Limitations list.
 
 ## Honesty
 

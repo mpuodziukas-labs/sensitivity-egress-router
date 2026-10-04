@@ -1,0 +1,33 @@
+# REVIEW-ROUTER: hostile review of sensitivity-egress-router v2-decode (2026-10-04)
+
+Harness: `python3 -c` in memory, `import router as R; R.route([t])`. K = `"s"+"k-"+"Ab3Xy9"*4` (synthetic). b64(x) = base64 of x. Every row was run. Out of scope (known): homoglyphs, punctuation in a key, nested, separated/0x hex, rot13, hash-shaped hex, health widening.
+
+| id | attack | call (t =) | observed | expected | sev | test to plant |
+|---|---|---|---|---|---|---|
+| R1 | one invalid UTF-8 byte poisons the whole base64 decode | `"note "+b64(b"key "+K+b"\xff")` | clean/cloud | secret/local | kill | decode with `errors="replace"`; assert local |
+| R2 | one invalid UTF-8 byte poisons the hex decode (97% text, not hash-shaped) | `"note "+(b"key "+K+b"\xff").hex()` | clean/cloud | secret/local | kill | same as R1 for the hex path |
+| R3 | 2-char hex prefix that forms a bad lead byte | `"note ff"+(b"key "+K).hex()` | clean/cloud | secret/local | high | try offsets 0..3, replace bad bytes |
+| R4 | base64 glued to a word, so 4-char alignment shifts (hex has the 1-shift fix, b64 has none) | `"token"+b64(b"key "+K)`, also `"x"+b64(...)` | clean/cloud | secret/local | kill | try b64 at offsets 0..3 |
+| R5 | MIME-wrapped base64 (76 cols), secret crosses a line | `b64(b"p"*45+b" key "+K+b" end")` split every 76 with `\n` | clean/cloud | secret/local | high | join lines of b64 runs before decode |
+| R6 | hex wrapped at 64 cols, secret crosses a line | `(b"p"*20+b" key "+K).hex()` split every 64 with `\n` | clean/cloud | secret/local | high | join wrapped hex lines |
+| R7 | UTF-16LE text, base64 encoded (NUL every 2nd byte, fails 90% gate) | `"note "+b64(("key "+K).encode("utf-16-le"))` | clean/cloud | secret/local | high | also try utf-16-le/be decode of the bytes |
+| R8 | UTF-16LE text, hex encoded | `"note "+("key "+K).encode("utf-16-le").hex()` | clean/cloud | secret/local | high | same as R7 for hex |
+| R9 | control padding drops the decoded view below the 90% printable gate | `"note "+b64(b"key "+K+b"\x01"*6)` (3 still caught) | clean/cloud | secret/local | high | scan every decoded view, the gate is advisory only |
+| R10 | variation selector inside the key (Mn, not Cf, NFKC keeps it) | `"s️k-"+"Ab3Xy9"*4` | clean/cloud | secret/local | kill | strip Mn VS16/VS1-16/U+034F in canon |
+| R11 | combining grapheme joiner inside the key | `"s͏k-"+"Ab3Xy9"*4` | clean/cloud | secret/local | kill | same as R10 |
+| R12 | NUL (Cc) between key chars; README says "zero-width" only | `"s\x00k\x00-"+"Ab3Xy9"*4` | clean/cloud | secret/local | high | strip Cc except \t\n\r in canon |
+| R13 | JSON \u escape inside a quoted value | `'{"note":"\\u0073k-'+"Ab3Xy9"*4+'"}'` | clean/cloud | secret/local | high | add a json-unescape view (`\uXXXX`) |
+| R14 | key split across two JSON fields | `'{"a":"sk-Ab3Xy9","b":"'+"Ab3Xy9"*3+'"}'` | clean/cloud | secret/local | med (near the known punctuation class) | view of concatenated JSON string values |
+| R15 | person name ending in a non-ASCII letter: `[A-Z][a-z]+\b` fails | `"Mrs. Zoë was diagnosed with cancer"`, `"Mr. José has diabetes"` | clean/cloud | health/local | high | use `[^\W\d_]` (Unicode letters) in PERSON |
+| R16 | same, percent-encoded UTF-8 name | `"see Mr.%20Ren%C3%A9 diagnosed with cancer"` | clean/cloud | health/local | high | covered by R15 fix, plant the url row |
+| R17 | apostrophe name (real names, not an attack) | `"Mr. O’Brien has diabetes"` | clean/cloud | health/local | med | allow `['’-]` after the first capital |
+| R18 | quadratic EMAIL regex: `[\w.+-]+@` with no `@`; `.` breaks the overlong rule | `"a."*n`: 4k 0.22s, 8k 0.85s, 16k 3.32s, 160k hung >300s | no deadline, hangs | bounded time | med (DoS; fail-closed only if the caller sets a deadline) | timing test 64k < 1s; check `@ in text` first or a bounded regex |
+| P1 | 4095-char base64 run | `b64(b"key "+K).ljust(4095,"A")` | secret/local +base64 | secret/local | pass | - |
+| P2 | 4096 run | `"A"*4096` | unclassified/local | local | pass | - |
+| P3 | padding stripped, URL-safe, uppercase hex | see rows `b64_nopad`, `b64_urlsafe`, `hex_upper` | secret/local | secret/local | pass | - |
+| P4 | pct-encoded fullwidth `ｓｋ－` | `"%EF%BD%93..."+"Ab3Xy9"*4` | secret/local +url | secret/local | pass | - |
+| P5 | marker after NUL, in a code fence, in an HTML comment | `"hello\x00"+K`, fenced, `<!-- K -->` | secret/local | secret/local | pass | - |
+| P6 | exception path in route() | read: bare `except Exception` gives unclassified, which routes local or is refused | fail-closed | fail-closed | pass | - |
+
+Root cause: R1-R9 all come from one rule. A decoded view is dropped (`continue` or printable < 0.9) instead of scanned. Any drop of a view is fail-open. Fix: scan every decoded view with `errors="replace"`, and remove the 90% gate from the scan path.
+Counts: kill 5 (R1 R2 R4 R10 R11), high 10, med 3, pass 6.
